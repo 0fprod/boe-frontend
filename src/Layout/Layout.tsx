@@ -1,13 +1,16 @@
-import React from "react";
-import { NavMenu } from "../Components/Header/NavMenu";
+import React from 'react';
+import { Footer } from './Footer/Footer';
+import { Main } from './Main/Main';
+import { NavMenu } from './NavMenu/NavMenu';
 
 interface Props {}
 
 export const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <>
+    <React.Fragment>
       <NavMenu />
-      {children}
-    </>
+      <Main>{children}</Main>
+      <Footer />
+    </React.Fragment>
   );
 };

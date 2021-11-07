@@ -9,13 +9,11 @@ interface Props {
   contratos: Contrato[];
 }
 
-const Contratos: NextPage<Props> = ({ contratos }) => {
-  return (
-    <Layout>
-      <ListadoContratos contratos={contratos} />
-    </Layout>
-  );
-};
+const Contratos: NextPage<Props> = ({ contratos }) => (
+  <Layout>
+    <ListadoContratos contratos={contratos} />
+  </Layout>
+);
 
 export async function getStaticProps() {
   let contratos;
