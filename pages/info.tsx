@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import React from "react";
 import { Layout } from "../src/Layout/Layout";
 
-const Home: NextPage = () => {
-  return <Layout>Contratos</Layout>;
+const Info: NextPage = () => {
+  return <Layout>Info</Layout>;
 };
 
-export default Home;
+export default Info;
