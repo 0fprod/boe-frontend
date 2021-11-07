@@ -1,8 +1,21 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import '../styles/globals.css';
+import { customTheme } from '../styles/theme.config';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <React.Fragment>
+      <Head>
+        <title>Contratos públicos</title>
+      </Head>
+      <ThemeProvider theme={customTheme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </React.Fragment>
+  );
 }
 
-export default MyApp
+export default MyApp;
