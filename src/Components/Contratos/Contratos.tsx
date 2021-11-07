@@ -7,13 +7,12 @@ interface Props {
 
 export const ListadoContratos: React.FC<Props> = ({ contratos }) => {
   return (
-    <>
-      <div> Contratazos </div>
+    <React.Fragment>
       {contratos &&
         contratos.length &&
         contratos.map((c, index) => {
           return <pre key={index}>{JSON.stringify(c, null, 4)}</pre>;
         })}
-    </>
+    </React.Fragment>
   );
 };
