@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ButtonWrapper, CalendarioWrapper, InputWrapper, StyledButton, StyledInput, StyledLabel } from './Calendario.styled';
 
 export interface CalendarioProps {
   obtenerContratosPorFecha: (fechaInicio: string, fechaFin?: string) => {};
@@ -43,30 +44,36 @@ export const Calendario: React.FC<CalendarioProps> = ({ obtenerContratosPorFecha
   };
 
   return (
-    <React.Fragment>
-      <label htmlFor="fechaInicio">Fecha inicial</label>
-      <input
-        id="fechaInicio"
-        aria-label="fecha inicial"
-        type="date"
-        min={fechaMinima}
-        max={fechaMaxima}
-        name="fecha-inicio"
-        onChange={fechaInicioHandler}
-        value={fechaInicio}
-      />
-      <label htmlFor="fechaFinal">Fecha final</label>
-      <input
-        id="fechaFinal"
-        aria-label="fecha final"
-        type="date"
-        min={fechaMinima}
-        max={fechaMaxima}
-        name="fecha-fin"
-        onChange={fechaFindHandler}
-        value={fechaFin}
-      />
-      <button onClick={buscarHandler}>Buscar!</button>
-    </React.Fragment>
+    <CalendarioWrapper>
+      <InputWrapper>
+        <StyledLabel htmlFor="fechaInicio">Fecha inicial</StyledLabel>
+        <StyledInput
+          id="fechaInicio"
+          aria-label="fecha inicial"
+          type="date"
+          min={fechaMinima}
+          max={fechaMaxima}
+          name="fecha-inicio"
+          onChange={fechaInicioHandler}
+          value={fechaInicio}
+        />
+        <StyledLabel htmlFor="fechaFinal">
+          Fecha final <small>(opcional)</small>
+        </StyledLabel>
+        <StyledInput
+          id="fechaFinal"
+          aria-label="fecha final"
+          type="date"
+          min={fechaMinima}
+          max={fechaMaxima}
+          name="fecha-fin"
+          onChange={fechaFindHandler}
+          value={fechaFin}
+        />
+      </InputWrapper>
+      <ButtonWrapper>
+        <StyledButton onClick={buscarHandler}>Buscar!</StyledButton>
+      </ButtonWrapper>
+    </CalendarioWrapper>
   );
 };
