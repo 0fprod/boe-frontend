@@ -32,13 +32,13 @@ export interface Contrato {
 }
 
 export const constuirInstitucion = ({
-  tipoActividad = "",
-  actividad = "",
-  nombre = "",
-  nif = "",
-  email = "",
-  telefono = "",
-  web = "",
+  tipoActividad = '',
+  actividad = '',
+  nombre = '',
+  nif = '',
+  email = '',
+  telefono = '',
+  web = '',
 }: Partial<Institucion>): Institucion => ({
   actividad,
   tipoActividad,
@@ -50,12 +50,12 @@ export const constuirInstitucion = ({
 });
 
 export const construirBeneficiario = ({
-  nif = "",
-  nombre = "",
-  coste = -1,
+  nif = '',
+  nombre = '',
+  coste = 0,
   esPyme = false,
-  descripcion = "",
-  lote = "",
+  descripcion = '',
+  lote = '',
 }: Partial<Beneficiario>): Beneficiario => ({
   nif,
   nombre,
@@ -67,7 +67,7 @@ export const construirBeneficiario = ({
 
 export const construirDetallesDeContrato = ({
   beneficiarios = [],
-  descripcion = "",
+  descripcion = '',
   institucion = constuirInstitucion({}),
 }: Partial<DetallesDeContrato>): DetallesDeContrato => ({
   beneficiarios,
@@ -77,10 +77,10 @@ export const construirDetallesDeContrato = ({
 
 export const construirContrato = ({
   detalles = construirDetallesDeContrato({}),
-  fechaPub = "",
-  contratoId = "",
-  titulo = "",
-  urlPdf = "",
+  fechaPub = '',
+  contratoId = '',
+  titulo = '',
+  urlPdf = '',
 }: Partial<Contrato>): Contrato => ({
   detalles,
   contratoId,
