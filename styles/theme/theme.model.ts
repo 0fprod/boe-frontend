@@ -35,6 +35,7 @@ export interface CustomTheme {
     success: string;
     foregroundLight: string;
     foregroundDark: string;
+    lightGray: string;
   };
   fonts: Fonts;
 }

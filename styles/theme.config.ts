@@ -7,14 +7,15 @@ export const customTheme: CustomTheme = {
     xlarge: 'min-width: 1440px',
   },
   colors: {
-    primary: '#C7FFED',
-    secondary: '#BBC8CA',
-    accent: '#20A39E',
+    primary: '#6495ED',
+    secondary: '#20A39E',
+    accent: '#BBC8CA',
     error: '#F06449',
     success: '#8BF8B5',
     foregroundDark: '#2D2A32',
     foregroundLight: '#FFFFFF',
     warning: '#FFBA49',
+    lightGray: '#f5f5f5',
   },
   fonts: {
     desktop: {
