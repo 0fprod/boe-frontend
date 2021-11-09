@@ -3,9 +3,11 @@ import { calcularTotal, formatearCoste, formatearFecha } from './utils';
 
 describe('Utils Specs', () => {
   it('Formatea un dígito añadiendole la moneda y separadores correctos', () => {
-    expect(formatearCoste(100)).toEqual('100,00 €');
-    expect(formatearCoste(10000)).toEqual('10.000,00 €');
-    expect(formatearCoste(-1)).toEqual('-1,00 €');
+    const nonBreakableSpace = '\xa0'; // Esto es lo que le mete la libreria de Intl.NumberFormat
+    expect(formatearCoste(100)).toEqual(`100,00${nonBreakableSpace}€`);
+    expect(formatearCoste(1000)).toEqual(`1.000,00${nonBreakableSpace}€`);
+    expect(formatearCoste(10000)).toEqual(`10.000,00${nonBreakableSpace}€`);
+    expect(formatearCoste(-1)).toEqual(`-1,00${nonBreakableSpace}€`);
   });
 
   it('Formatea una fecha en ISO a formato corto aaaa-mm-dd', () => {

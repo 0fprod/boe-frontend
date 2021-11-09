@@ -8,8 +8,8 @@ export const calcularTotal = (coleccion: Beneficiario[]): number => {
 };
 
 export const formatearCoste = (price: number): string => {
-  const formatter = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' });
-  return formatter.format(Number(Number(price).toFixed(2))).replace(/\xa0/g, ' ');
+  const formatter = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
+  return formatter.format(Number(Number(price).toFixed(2)));
 };
 
 export const formatearFecha = (fechaEnIso: string): string => {
