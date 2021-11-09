@@ -18,7 +18,7 @@ const Contratos: NextPage<Props> = ({ contratos }) => (
 export async function getStaticProps() {
   let contratos;
   try {
-    contratos = await ContratoService.getContratos('');
+    contratos = await ContratoService.getContratos('2021-11-08');
   } catch (err) {
     console.error('Err --> ', err);
   }
