@@ -27,7 +27,7 @@ export const Tarjeta: React.FC<TarjetaProps> = ({ contrato }) => {
     <TarjetaWrapper>
       <TarjetaHeader>
         <span aria-label="fecha">{formatearFecha(fechaPub)}</span>
-        <span aria-label="coste">{formatearCoste(costeTotal)}</span>
+        <span aria-label="coste total">{formatearCoste(costeTotal)}</span>
       </TarjetaHeader>
       <Institucion institucion={institucion} />
       <StyledDescripcion>{descripcion}</StyledDescripcion>

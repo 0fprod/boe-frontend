@@ -41,7 +41,7 @@ export const TarjetaHeader = styled.header`
   span[aria-label='fecha'] {
     color: ${({ theme }: Props) => theme.colors.foregroundLight};
   }
-  span[aria-label='coste'] {
+  span[aria-label='coste total'] {
     color: ${({ theme }: Props) => theme.colors.warning};
   }
 

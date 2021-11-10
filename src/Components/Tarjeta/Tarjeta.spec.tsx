@@ -1,54 +1,86 @@
-import { render } from '@testing-library/react';
 import React from 'react';
+import { renderWithTheme } from '../../../styles/theme.test.utils';
 import { construirBeneficiario, construirContrato, construirDetallesDeContrato, constuirInstitucion } from '../../Models/contratos.model';
 import { Tarjeta } from './Tarjeta';
 
-describe('Tarjeta specs', () => {
-  it('Renderiza una tarjeta con los datos de un contrato', () => {
-    const contrato = construirContrato({
-      fechaPub: '2021/11/13',
-      titulo: 'Contrato irrelevante',
-      detalles: construirDetallesDeContrato({
-        beneficiarios: [
-          construirBeneficiario({
-            nombre: 'Beneficiario irrelevante',
-          }),
-        ],
-        institucion: constuirInstitucion({
-          actividad: 'Actividad irrelevante',
-          nombre: 'Institucion irrelevante',
+describe('Specs de Tarjeta', () => {
+  describe('El Header', () => {
+    it('Renderiza el coste total de los beneficiarios', () => {
+      const contrato = construirContrato({
+        detalles: construirDetallesDeContrato({
+          beneficiarios: [
+            construirBeneficiario({
+              coste: 10,
+              nombre: 'Beneficiario irrelevante1',
+            }),
+            construirBeneficiario({
+              coste: 10,
+              nombre: 'Beneficiario irrelevante2',
+            }),
+          ],
         }),
-      }),
-    });
-    const { getByText } = render(<Tarjeta contrato={contrato} />);
+      });
+      const { getByLabelText } = renderWithTheme(<Tarjeta contrato={contrato} />);
 
-    expect(getByText(/beneficiario irrelevante/i)).toBeInTheDocument();
-    expect(getByText(/contrato irrelevante/i)).toBeInTheDocument();
-    expect(getByText(/2021\/11\/13/i)).toBeInTheDocument();
-    expect(getByText(/actividad irrelevante/i)).toBeInTheDocument();
-    expect(getByText(/institucion irrelevante/i)).toBeInTheDocument();
+      const nonBreakableSpace = '&nbsp;';
+      expect(getByLabelText('coste total').innerHTML).toEqual(`20,00${nonBreakableSpace}€`);
+    });
+
+    it('Renderiza la fecha del contrato', () => {
+      const contrato = construirContrato({ fechaPub: '2021/11/13' });
+      const { getByText } = renderWithTheme(<Tarjeta contrato={contrato} />);
+
+      expect(getByText(/2021-11-13/i)).toBeInTheDocument();
+    });
   });
-  it.todo('Renderiza una tarjeta con los datos de un contrato con varios lotes');
-  it.todo('Renderiza una tarjeta con los datos de un contrato con varios beneficiarios');
-  it('Renderiza el coste total de los beneficiarios', () => {
-    const contrato = construirContrato({
-      detalles: construirDetallesDeContrato({
-        beneficiarios: [
-          construirBeneficiario({
-            coste: 10,
-            nombre: 'Beneficiario irrelevante1',
+  describe('La Institucion', () => {
+    it('Renderiza una tarjeta con los datos de una institución', () => {
+      const contrato = construirContrato({
+        fechaPub: '2021/11/13',
+        detalles: construirDetallesDeContrato({
+          institucion: constuirInstitucion({
+            actividad: 'Actividad irrelevante',
+            nombre: 'Institucion irrelevante',
           }),
-          construirBeneficiario({
-            coste: 10,
-            nombre: 'Beneficiario irrelevante2',
-          }),
-        ],
-      }),
-    });
-    const { getByText } = render(<Tarjeta contrato={contrato} />);
+          descripcion: 'Contrato irrelevante',
+        }),
+      });
+      const { getByText } = renderWithTheme(<Tarjeta contrato={contrato} />);
 
-    expect(getByText(/beneficiario irrelevante1/i)).toBeInTheDocument();
-    expect(getByText(/beneficiario irrelevante2/i)).toBeInTheDocument();
-    expect(getByText(/20/i)).toBeInTheDocument();
+      expect(getByText(/contrato irrelevante/i)).toBeInTheDocument();
+      expect(getByText(/actividad irrelevante/i)).toBeInTheDocument();
+      expect(getByText(/institucion irrelevante/i)).toBeInTheDocument();
+    });
+  });
+
+  describe('Los Beneficiarios', () => {
+    it('Renderiza una tarjeta con los datos de un contrato con varios beneficiarios', () => {
+      const contrato = construirContrato({
+        detalles: construirDetallesDeContrato({
+          beneficiarios: [
+            construirBeneficiario({
+              coste: 10,
+              nombre: 'Beneficiario irrelevante1',
+              descripcion: 'Descripcion irrelevante1',
+            }),
+            construirBeneficiario({
+              coste: 10,
+              nombre: 'Beneficiario irrelevante2',
+              descripcion: 'Descripcion irrelevante2',
+              esPyme: true,
+            }),
+          ],
+        }),
+      });
+      const { getByText } = renderWithTheme(<Tarjeta contrato={contrato} />);
+
+      expect(getByText(/beneficiario irrelevante1/i)).toBeInTheDocument();
+      expect(getByText(/descripcion irrelevante1/i)).toBeInTheDocument();
+      expect(getByText('❌')).toBeInTheDocument();
+
+      expect(getByText(/beneficiario irrelevante2/i)).toBeInTheDocument();
+      expect(getByText(/descripcion irrelevante2/i)).toBeInTheDocument();
+      expect(getByText('✅')).toBeInTheDocument();
+    });
   });
 });
