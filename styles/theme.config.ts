@@ -2,8 +2,8 @@ import { CustomTheme } from './theme/theme.model';
 
 export const customTheme: CustomTheme = {
   breakpoints: {
-    tablet: 'max-width: 1280px',
-    desktop: 'max-width: 1280px',
+    tablet: 'min-width: 768px',
+    desktop: 'min-width: 1024px',
     xlarge: 'min-width: 1440px',
   },
   colors: {
