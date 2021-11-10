@@ -8,9 +8,24 @@ interface Props {
 export const TarjetaWrapper = styled.article`
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: 1rem auto;
   background-color: ${({ theme }: Props) => theme.colors.foregroundLight};
   align-items: flex-start;
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    margin: 2rem auto;
+    max-width: 90vw;
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    margin: 2.5rem auto;
+    max-width: 70vw;
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.xlarge}) {
+    margin: 3rem auto;
+    max-width: 60vw;
+  }
 `;
 
 export const TarjetaHeader = styled.header`
@@ -29,6 +44,14 @@ export const TarjetaHeader = styled.header`
   span[aria-label='coste'] {
     color: ${({ theme }: Props) => theme.colors.warning};
   }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }: Props) => theme.fonts.tablet.intro.size};
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    font-size: ${({ theme }: Props) => theme.fonts.desktop.intro.size};
+  }
 `;
 
 export const StyledLink = styled.a`
@@ -41,4 +64,14 @@ export const StyledLink = styled.a`
 
 export const StyledDescripcion = styled.p`
   padding: 0 1rem;
+  margin: 0;
+  font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
+  }
 `;
