@@ -2,11 +2,12 @@ name: Master
 on:
   schedule:
     - cron: '*/5 * * * *'
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Running
+      - uses: actions/checkout@v1
+      - name: Running
         run: |
           curl --request POST --url '${{ secrets.FRONT_END_URL }}/api/cron' --header 'Authorization: Bearer ${{ secrets.API_SECRET }}'
