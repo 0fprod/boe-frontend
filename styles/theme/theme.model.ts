@@ -3,12 +3,6 @@ interface FontSizes {
 }
 
 interface Typography {
-  h1: FontSizes;
-  h2: FontSizes;
-  h3: FontSizes;
-  h4: FontSizes;
-  h5: FontSizes;
-  h6: FontSizes;
   intro: FontSizes;
   body: FontSizes;
   small: FontSizes;
