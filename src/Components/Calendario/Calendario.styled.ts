@@ -78,8 +78,9 @@ export const StyledButton = styled.button`
   border: none;
   font-size: ${({ theme }: Props) => theme.fonts.mobile.intro.size};
   color: ${({ theme }: Props) => theme.colors.foregroundLight};
-  background-color: ${({ theme }: Props) => theme.colors.accent};
+  background-color: ${({ theme }: Props) => theme.colors.secondary};
   padding: 0.7rem 1rem;
+  cursor: pointer;
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
     font-size: ${({ theme }: Props) => theme.fonts.tablet.intro.size};

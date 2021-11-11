@@ -21,11 +21,24 @@ export const StyledUl = styled.ul`
 `;
 
 export const StyledLi = styled.li`
-  color: ${({ theme }: Props) => theme.colors.foregroundDark};
+  padding: 0 1rem;
+  color: ${({ theme }: Props) => theme.colors.foregroundLight};
   font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
   height: 100%;
   align-items: center;
   display: flex;
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
+  }
+
+  &:hover {
+    background-color: ${({ theme }: Props) => theme.colors.secondary};
+  }
 `;
 
 export const StyledAnchor = styled.a``;

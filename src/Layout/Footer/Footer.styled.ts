@@ -11,6 +11,14 @@ export const StyledFooter = styled.footer`
   align-items: center;
   height: 5vh;
   background-color: ${({ theme }: Props) => theme.colors.primary};
-  color: ${({ theme }: Props) => theme.colors.foregroundDark};
   font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
+  color: ${({ theme }: Props) => theme.colors.foregroundLight};
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
+  }
 `;
