@@ -13,13 +13,13 @@ describe('Contratos Specs', () => {
         }),
       }),
     ];
-    const { getByText } = renderWithTheme(<ListadoContratos contratos={contratos} obtenerContratosPorFecha={jest.fn()} />);
+    const { getByText } = renderWithTheme(<ListadoContratos cargando={false} contratos={contratos} obtenerContratosPorFecha={jest.fn()} />);
 
     expect(getByText(/contrato irrelevante/i)).toBeInTheDocument();
     expect(getByText(/institucion irrelevante/i)).toBeInTheDocument();
   });
   it('Si no hay contratos muestra un mensaje específico', () => {
-    const { getByText } = renderWithTheme(<ListadoContratos contratos={[]} obtenerContratosPorFecha={jest.fn()} />);
+    const { getByText } = renderWithTheme(<ListadoContratos cargando={false} contratos={[]} obtenerContratosPorFecha={jest.fn()} />);
 
     expect(getByText(/🚧 no hay contratos para las fechas seleccionadas 🚧/i)).toBeInTheDocument();
   });

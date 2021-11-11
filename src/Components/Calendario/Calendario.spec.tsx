@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react';
 import user from '@testing-library/user-event';
+import { renderWithTheme } from '../../../styles/theme.test.utils';
 import { Calendario } from './Calendario';
 describe('Calendario specs', () => {
   it('Emite una búsqueda con las 2 fechas seleccionadas', () => {
     const buscarStub = jest.fn();
-    const { getByLabelText, getByText } = render(<Calendario obtenerContratosPorFecha={buscarStub} />);
+    const { getByLabelText, getByText } = renderWithTheme(<Calendario obtenerContratosPorFecha={buscarStub} />);
     const fechaInicialInput = getByLabelText('fecha inicial');
     const fechaFinalInput = getByLabelText('fecha final');
     const buscarBtn = getByText('Buscar!');
@@ -19,7 +19,7 @@ describe('Calendario specs', () => {
 
   it('Emite una búsqueda con la 1 fecha (inicio) seleccionada', () => {
     const buscarStub = jest.fn();
-    const { getByLabelText, getByText } = render(<Calendario obtenerContratosPorFecha={buscarStub} />);
+    const { getByLabelText, getByText } = renderWithTheme(<Calendario obtenerContratosPorFecha={buscarStub} />);
     const fechaInicialInput = getByLabelText('fecha inicial');
     const buscarBtn = getByText('Buscar!');
 
@@ -32,7 +32,7 @@ describe('Calendario specs', () => {
 
   it('No permite que la fecha final sea anterior a la inicial', () => {
     const buscarStub = jest.fn();
-    const { getByLabelText, getByText } = render(<Calendario obtenerContratosPorFecha={buscarStub} />);
+    const { getByLabelText, getByText } = renderWithTheme(<Calendario obtenerContratosPorFecha={buscarStub} />);
     const fechaInicialInput = getByLabelText('fecha inicial');
     const fechaFinalInput = getByLabelText('fecha final');
     const buscarBtn = getByText('Buscar!');
@@ -46,7 +46,7 @@ describe('Calendario specs', () => {
   });
 
   it('No permite seleccion de fechas anteriores al año 2021', () => {
-    const { getByLabelText } = render(<Calendario obtenerContratosPorFecha={jest.fn} />);
+    const { getByLabelText } = renderWithTheme(<Calendario obtenerContratosPorFecha={jest.fn} />);
     const fechaInicialInput = getByLabelText('fecha inicial');
     const fechaFinalInput = getByLabelText('fecha final');
 
