@@ -2,7 +2,7 @@ import { construirContrato, Contrato } from '../Models/contratos.model';
 import { ContratoService } from './contrato.service';
 
 describe('Contrato Service Specs', () => {
-  const { getContratos } = ContratoService;
+  const { getContratos, guardarContratosHoy } = ContratoService;
 
   afterEach(() => {
     jest.resetAllMocks();
@@ -45,5 +45,12 @@ describe('Contrato Service Specs', () => {
 
     const contratos = await getContratos('');
     expect(contratos).toEqual({ message: 'Error', statusCode: 400 });
+  });
+
+  it('Devuelve numero de contratos guardados', async () => {
+    global.fetch = jest.fn().mockImplementationOnce(() => Promise.resolve({ json: () => ({ itemsGuarados: 40 }) }));
+
+    const items = await guardarContratosHoy();
+    expect(items).toEqual({ itemsGuarados: 40 });
   });
 });
