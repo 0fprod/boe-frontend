@@ -9,7 +9,6 @@ on:
 env:
   SECRETAPI: ${{ secrets.API_SECRET }}
   FRONTURL: ${{ secrets.FRONT_END_URL }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
