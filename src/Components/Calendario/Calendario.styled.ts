@@ -51,6 +51,7 @@ export const StyledInput = styled.input`
   outline: none;
   border-bottom: 1px solid ${({ theme }: Props) => theme.colors.accent};
   background-color: transparent;
+  width: max-content;
 `;
 
 export const StyledLabel = styled.label`
