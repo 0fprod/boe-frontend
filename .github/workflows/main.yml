@@ -1,13 +1,14 @@
 name: Master
-env:
-  SECRETAPI: ${{ secrets.API_SECRET }}
-  FRONTURL: ${{ secrets.FRONT_END_URL }}
 on:
   push:
     branches:
       - main
   schedule:
     - cron: '*/5 * * * *'
+
+env:
+  TEST: SomeTest
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,4 +16,4 @@ jobs:
       - uses: actions/checkout@v1
       - name: Running
         run: |
-          curl --request POST --url $FRONTURL'/api/cron' --header 'Authorization: Bearer '$SECRETAPI
+          curl --request POST --url $TEST'/api/cron'
