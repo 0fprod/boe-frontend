@@ -1,7 +1,7 @@
 name: Master
 on:
   push:
-    branches: 
+    branches:
       - main
   schedule:
     - cron: '*/5 * * * *'
@@ -11,4 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Running
-        run: curl --request POST --url '${{ secrets.FRONT_END_URL }}/api/cron' --header 'Authorization: Bearer ${{ secrets.API_SECRET }}'
+        run: |
+          curl --request POST --url '${{ secrets.FRONT_END_URL }}/api/cron' --header 'Authorization: Bearer ${{ secrets.API_SECRET }}'
