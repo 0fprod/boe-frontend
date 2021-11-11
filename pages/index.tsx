@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ListadoContratos } from '../src/Components/Contratos/Contratos';
 import { Layout } from '../src/Layout/Layout';
 import { Contrato } from '../src/Models/contratos.model';
@@ -12,9 +12,11 @@ interface Props {
 
 const Contratos: NextPage<Props> = ({ contratos }) => {
   const [listaContratos, setListaContratos] = useState(contratos);
+  const [cargando, setCargando] = useState(true);
 
   const handleContrato = async (fechaInicio: string, fechaFin?: string) => {
     try {
+      setCargando(true);
       const contratos: Contrato[] = await ContratoService.getContratos(fechaInicio, fechaFin);
       setListaContratos(contratos);
     } catch (error) {
@@ -22,9 +24,13 @@ const Contratos: NextPage<Props> = ({ contratos }) => {
     }
   };
 
+  useEffect(() => {
+    setCargando(false);
+  }, [listaContratos]);
+
   return (
     <Layout>
-      <ListadoContratos contratos={listaContratos} obtenerContratosPorFecha={handleContrato} />
+      <ListadoContratos contratos={listaContratos} obtenerContratosPorFecha={handleContrato} cargando={cargando} />
     </Layout>
   );
 };
