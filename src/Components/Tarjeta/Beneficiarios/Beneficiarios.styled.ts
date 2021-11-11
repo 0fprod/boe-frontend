@@ -28,7 +28,15 @@ export const StyledBeneficiario = styled.div`
   justify-content: space-between;
   font-weight: 500;
   padding: 0.5rem;
+  font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
 
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
+  }
   span[aria-label='coste'] {
     color: ${({ theme }: Props) => theme.colors.error};
   }
