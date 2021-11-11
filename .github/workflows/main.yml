@@ -1,4 +1,7 @@
 name: Master
+env:
+  SECRETAPI: ${{ secrets.API_SECRET }}
+  FRONTURL: ${{ secrets.FRONT_END_URL }}
 on:
   push:
     branches:
@@ -12,4 +15,4 @@ jobs:
       - uses: actions/checkout@v1
       - name: Running
         run: |
-          curl --request POST --url '${{ secrets.FRONT_END_URL }}/api/cron' --header 'Authorization: Bearer ${{secrets.API_SECRET}}'
+          curl --request POST --url '$FRONTURL/api/cron' --header 'Authorization: Bearer $SECRETAPI'
