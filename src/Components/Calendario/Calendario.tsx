@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
-import { ButtonWrapper, CalendarioWrapper, InputWrapper, StyledButton, StyledInput, StyledLabel } from './Calendario.styled';
+import { formatearFecha } from '../../utils/utils';
+import { ButtonWrapper, CalendarioWrapper, InputGroup, InputsWrapper, StyledButton, StyledInput, StyledLabel } from './Calendario.styled';
 
 export interface CalendarioProps {
-  obtenerContratosPorFecha: (fechaInicio: string, fechaFin?: string) => {};
+  obtenerContratosPorFecha: (fechaInicio: string, fechaFin?: string) => void;
 }
 
 export const Calendario: React.FC<CalendarioProps> = ({ obtenerContratosPorFecha }) => {
-  const formatFecha = (fecha: Date): string => {
-    const yyyy = fecha.getFullYear();
-    const mm = fecha.getMonth() + 1;
-    const dd = fecha.getDay();
-
-    return `${yyyy}-${mm}-${dd}`;
-  };
-
   const fechaMinima = '2021-01-01';
-  const fechaMaxima = formatFecha(new Date());
-
-  const [fechaInicio, setFechaInicio] = useState<string>(formatFecha(new Date()));
+  const fechaMaxima = formatearFecha(new Date().toISOString());
+  const [fechaInicio, setFechaInicio] = useState<string>(formatearFecha(new Date().toISOString()));
   const [fechaFin, setFechaFin] = useState<string>('');
 
   const fechaInicioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,32 +37,38 @@ export const Calendario: React.FC<CalendarioProps> = ({ obtenerContratosPorFecha
 
   return (
     <CalendarioWrapper>
-      <InputWrapper>
-        <StyledLabel htmlFor="fechaInicio">Fecha inicial</StyledLabel>
-        <StyledInput
-          id="fechaInicio"
-          aria-label="fecha inicial"
-          type="date"
-          min={fechaMinima}
-          max={fechaMaxima}
-          name="fecha-inicio"
-          onChange={fechaInicioHandler}
-          value={fechaInicio}
-        />
-        <StyledLabel htmlFor="fechaFinal">
-          Fecha final <small>(opcional)</small>
-        </StyledLabel>
-        <StyledInput
-          id="fechaFinal"
-          aria-label="fecha final"
-          type="date"
-          min={fechaMinima}
-          max={fechaMaxima}
-          name="fecha-fin"
-          onChange={fechaFindHandler}
-          value={fechaFin}
-        />
-      </InputWrapper>
+      <InputsWrapper>
+        <InputGroup>
+          <StyledLabel htmlFor="fechaInicio">Fecha inicial</StyledLabel>
+          <StyledInput
+            id="fechaInicio"
+            aria-label="fecha inicial"
+            type="date"
+            min={fechaMinima}
+            max={fechaMaxima}
+            name="fecha-inicio"
+            onChange={fechaInicioHandler}
+            value={fechaInicio}
+          />
+        </InputGroup>
+
+        <InputGroup>
+          <StyledLabel htmlFor="fechaFinal">
+            Fecha final <small>(opcional)</small>
+          </StyledLabel>
+          <StyledInput
+            id="fechaFinal"
+            aria-label="fecha final"
+            type="date"
+            min={fechaMinima}
+            max={fechaMaxima}
+            name="fecha-fin"
+            onChange={fechaFindHandler}
+            value={fechaFin}
+          />
+        </InputGroup>
+      </InputsWrapper>
+
       <ButtonWrapper>
         <StyledButton onClick={buscarHandler}>Buscar!</StyledButton>
       </ButtonWrapper>

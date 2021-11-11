@@ -10,9 +10,35 @@ export const CalendarioWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0 2rem;
+  margin: 0 auto;
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    max-width: 90vw;
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    max-width: 70vw;
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.xlarge}) {
+    max-width: 60vw;
+  }
 `;
 
-export const InputWrapper = styled.div`
+export const InputsWrapper = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+`;
+
+export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,11 +51,20 @@ export const StyledInput = styled.input`
   outline: none;
   border-bottom: 1px solid ${({ theme }: Props) => theme.colors.accent};
   background-color: transparent;
+  width: max-content;
 `;
 
 export const StyledLabel = styled.label`
   margin-top: 1rem;
   font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -45,4 +80,12 @@ export const StyledButton = styled.button`
   color: ${({ theme }: Props) => theme.colors.foregroundLight};
   background-color: ${({ theme }: Props) => theme.colors.accent};
   padding: 0.7rem 1rem;
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }: Props) => theme.fonts.tablet.intro.size};
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    font-size: ${({ theme }: Props) => theme.fonts.desktop.intro.size};
+  }
 `;

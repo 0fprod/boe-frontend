@@ -7,7 +7,7 @@ const getContratos = (fechaInicio: string, fechaFin: string = ''): Promise<Contr
 
   return fetch(url, { method: 'get' })
     .then((response) => response.json())
-    .catch(({ message, statusCode }) => ({ message, statusCode }));
+    .catch(({ message, statusCode }) => ({ message: message ?? null, statusCode: statusCode ?? null }));
 };
 
 export const ContratoService = {
