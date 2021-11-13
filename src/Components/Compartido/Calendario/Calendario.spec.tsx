@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event';
-import { renderWithTheme } from '../../../styles/theme.test.utils';
+import { renderWithTheme } from '../../../../styles/theme.test.utils';
 import { Calendario } from './Calendario';
 describe('Calendario specs', () => {
   it('Emite una búsqueda con las 2 fechas seleccionadas', () => {

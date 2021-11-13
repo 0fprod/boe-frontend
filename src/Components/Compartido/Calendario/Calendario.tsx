@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { formatearFecha } from '../../utils/utils';
+import { formatearFecha } from '../../../utils/utils';
 import { ButtonWrapper, CalendarioWrapper, InputGroup, InputsWrapper, StyledButton, StyledInput, StyledLabel } from './Calendario.styled';
 
 export interface CalendarioProps {
