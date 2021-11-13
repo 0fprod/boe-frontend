@@ -5,10 +5,6 @@ interface Props {
   theme: CustomTheme;
 }
 
-export const StyledMain = styled.main`
-  min-height: 90vh;
-`;
-
 export const Mensaje = styled.article`
   width: 80vw;
   display: flex;
