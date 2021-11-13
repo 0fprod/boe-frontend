@@ -1,8 +1,9 @@
 import React from 'react';
 import { Contrato } from '../../Models/contratos.model';
-import { Calendario } from '../Calendario/Calendario';
+import { Calendario } from '../Compartido/Calendario/Calendario';
+import { Cargando } from '../Compartido/Cargando/Cargando';
 import { Tarjeta } from '../Tarjeta/Tarjeta';
-import { Cargando, Mensaje } from './Contratos.styled';
+import { Mensaje } from './Contratos.styled';
 
 interface Props {
   contratos: Contrato[];
@@ -15,11 +16,7 @@ export const ListadoContratos: React.FC<Props> = ({ contratos, obtenerContratosP
   return (
     <React.Fragment>
       <Calendario obtenerContratosPorFecha={obtenerContratosPorFecha} />
-      {cargando && (
-        <Cargando>
-          <div className="lds-dual-ring"></div>
-        </Cargando>
-      )}
+      {cargando && <Cargando />}
       {!cargando && totalContratos ? (
         contratos.map((c, index) => <Tarjeta key={index} contrato={c} />)
       ) : (
