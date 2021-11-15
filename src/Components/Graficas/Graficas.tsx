@@ -16,7 +16,7 @@ export const Graficas: React.FC<Props> = ({ contratos, cargando, obtenerContrato
     <React.Fragment>
       <Calendario obtenerContratosPorFecha={obtenerContratosPorFecha} />
       {cargando && <Cargando />}
-      <TarjetaGrafica titulo="Prueba" fnCalculo={totalContratosPorPymes} contratos={contratos} />
+      <TarjetaGrafica titulo="Presupuesto distribuido en PYMES/No PYMES" fnCalculo={totalContratosPorPymes} contratos={contratos} />
     </React.Fragment>
   );
 };
