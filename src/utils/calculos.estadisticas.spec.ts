@@ -8,6 +8,7 @@ import {
 } from '../Models/contratos.model';
 import { DatosGrafico } from '../Models/datos.model';
 import { costeSegunTipoDeEmpresa, gastoTotal, totalContratosPorActividad, totalContratosPorPymes } from './calculos.estadisticas';
+import { COLORES_GRAFICOS } from './utils';
 
 describe('Pruebas de calculos ', () => {
   const empresas: Beneficiario[] = [
@@ -34,28 +35,34 @@ describe('Pruebas de calculos ', () => {
   ];
   describe('Costes totales de unos datos graficos', () => {
     it('Retorna el total de todas las categorias de datos de un grafico', () => {
-      const total: DatosGrafico = [
-        ['Categorías', 'Total por categoría'],
-        ['Categoria 1', 10],
-        ['Categoria 2', 10],
-        ['Categoria 3', 500],
-        ['Categoria 4', 50],
+      const contratos = [
+        construirContrato({
+          detalles: construirDetallesDeContrato({
+            beneficiarios: [
+              construirBeneficiario({
+                coste: 100,
+              }),
+              construirBeneficiario({
+                coste: 100,
+              }),
+            ],
+          }),
+        }),
+        construirContrato({
+          detalles: construirDetallesDeContrato({
+            beneficiarios: [
+              construirBeneficiario({
+                coste: 100,
+              }),
+              construirBeneficiario({
+                coste: 100,
+              }),
+            ],
+          }),
+        }),
       ];
 
-      expect(gastoTotal(total)).toEqual(570);
-    });
-
-    it('Retorna el total de todas las categorias de datos de un grafico ignorando los costes que no son digitos o menores a 0', () => {
-      const total: any = [
-        ['Categorías', 'Total por categoría'],
-        ['Categoria 1', '10'],
-        ['Categoria 2', -1],
-        ['Categoria 3', 'aa'],
-        ['Categoria 4', 5],
-        ['Categoria 5', 10],
-      ];
-
-      expect(gastoTotal(total)).toEqual(15);
+      expect(gastoTotal(contratos)).toEqual(400);
     });
   });
   describe('Calculo de empresas pymes', () => {
@@ -63,7 +70,7 @@ describe('Pruebas de calculos ', () => {
       expect(costeSegunTipoDeEmpresa(empresas, true)).toEqual(150);
     });
     it('Retorna el total gastado en empresas que no son pymes', () => {
-      expect(costeSegunTipoDeEmpresa(empresas, false)).toEqual(25);
+      expect(costeSegunTipoDeEmpresa(empresas, false)).toEqual(40);
     });
 
     it('Retorna los datos de las empresas con sus costes totales asociados por PYME/NoPyme', () => {
@@ -82,11 +89,15 @@ describe('Pruebas de calculos ', () => {
         }),
       ];
 
-      const resultado: DatosGrafico = [
-        ['PYMES/NO PYMES', 'Ingresos totales'],
-        ['PYMES', 300],
-        ['NO PYMES', 50],
-      ];
+      const resultado: DatosGrafico = {
+        datasets: [
+          {
+            data: [300, 80],
+            backgroundColor: COLORES_GRAFICOS.slice(0, 2),
+          },
+        ],
+        labels: ['PYMES', 'Grandes Empresas'],
+      };
 
       expect(totalContratosPorPymes(contratos)).toStrictEqual(resultado);
     });
@@ -123,12 +134,10 @@ describe('Pruebas de calculos ', () => {
           }),
         }),
       ];
-      const resultado: DatosGrafico = [
-        ['Actividad', 'Coste por actividad'],
-        ['actividad-irrelevante1', 190],
-        ['actividad-irrelevante2', 190],
-        ['actividad-irrelevante3', 190],
-      ];
+      const resultado: DatosGrafico = {
+        datasets: [{ data: [190, 190, 190], backgroundColor: COLORES_GRAFICOS.slice(0, 3) }],
+        labels: ['actividad-irrelevante1', 'actividad-irrelevante2', 'actividad-irrelevante3'],
+      };
 
       expect(totalContratosPorActividad(contratos)).toStrictEqual(resultado);
     });
@@ -137,6 +146,15 @@ describe('Pruebas de calculos ', () => {
       const contratos: Contrato[] = [
         construirContrato({
           contratoId: 'id-irrelevante1',
+          detalles: construirDetallesDeContrato({
+            beneficiarios: [...empresas],
+            institucion: constuirInstitucion({
+              actividad: 'actividad-irrelevante1',
+            }),
+          }),
+        }),
+        construirContrato({
+          contratoId: 'id-irrelevante4',
           detalles: construirDetallesDeContrato({
             beneficiarios: [...empresas],
             institucion: constuirInstitucion({
@@ -159,11 +177,11 @@ describe('Pruebas de calculos ', () => {
           }),
         }),
       ];
-      const resultado: DatosGrafico = [
-        ['Actividad', 'Coste por actividad'],
-        ['actividad-irrelevante1', 190],
-        ['Sin actividad definida', 380],
-      ];
+
+      const resultado: DatosGrafico = {
+        datasets: [{ data: [380, 380], backgroundColor: COLORES_GRAFICOS.slice(0, 2) }],
+        labels: ['actividad-irrelevante1', 'Sin actividad definida'],
+      };
 
       expect(totalContratosPorActividad(contratos)).toStrictEqual(resultado);
     });

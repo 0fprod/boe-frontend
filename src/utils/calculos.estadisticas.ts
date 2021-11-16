@@ -1,12 +1,13 @@
 import { Beneficiario, Contrato } from '../Models/contratos.model';
 import { DatosGrafico } from '../Models/datos.model';
+import { COLORES_GRAFICOS } from './utils';
 
 export const costeSegunTipoDeEmpresa = (beneficiario: Beneficiario[], pyme: boolean): number => {
   let costeTotal = 0;
   if (pyme) {
     costeTotal = beneficiario.reduce((costeAcumulado, { esPyme, coste }) => (esPyme ? (costeAcumulado += coste) : costeAcumulado), 0);
   } else {
-    costeTotal = beneficiario.reduce((costeAcumulado, { esPyme, coste }) => (esPyme ? (costeAcumulado += coste) : coste), 0);
+    costeTotal = beneficiario.reduce((costeAcumulado, { esPyme, coste }) => (esPyme ? costeAcumulado : (costeAcumulado += coste)), 0);
   }
   return costeTotal;
 };
@@ -20,19 +21,22 @@ export const totalContratosPorPymes = (contratos: Contrato[]): DatosGrafico => {
     costeAcumulado += costeSegunTipoDeEmpresa(beneficiarios, false);
     return costeAcumulado;
   }, 0);
-  return [
-    ['PYMES/Grandes Empresas', 'Ingresos totales'],
-    ['PYMES', totalCostePymes],
-    ['Grandes Empresas', totalCosteNoPymes],
-  ];
+
+  // los colores_graficos es base al numero de categorías
+  return {
+    labels: ['PYMES', 'Grandes Empresas'],
+    datasets: [{ data: [totalCostePymes, totalCosteNoPymes], backgroundColor: COLORES_GRAFICOS.slice(0, 2) }],
+  };
 };
 
-export const gastoTotal = (datos: DatosGrafico) => {
-  const [titulo, ...resto] = datos;
+export const gastoTotal = (contratos: Contrato[]) => {
+  return contratos.reduce((costeAcumulado, contrato) => {
+    const {
+      detalles: { beneficiarios },
+    } = contrato;
+    const totalEnBeneficiarios = gastoTotalDeBeneficiarios(beneficiarios);
 
-  return resto.reduce((costeAcumulado, [_titulo, coste]) => {
-    if (!Number.isNaN(coste) && coste >= 0) return (costeAcumulado += coste);
-    return costeAcumulado;
+    return (costeAcumulado += totalEnBeneficiarios);
   }, 0);
 };
 
@@ -49,9 +53,18 @@ export const totalContratosPorActividad = (contratos: Contrato[]): DatosGrafico 
       const acumuladoSinActividad = datosPorActividad.get('Sin actividad definida') ?? 0;
       datosPorActividad.set('Sin actividad definida', acumuladoSinActividad + total);
     } else {
-      datosPorActividad.set(actividad, total);
+      const acumuladoEnLaActiviad = datosPorActividad.get(actividad) ?? 0;
+      datosPorActividad.set(actividad, acumuladoEnLaActiviad + total);
     }
   });
 
-  return [['Actividad', 'Coste por actividad'], ...Array.from(datosPorActividad)];
+  return {
+    labels: Array.from(datosPorActividad).map(([key]) => key),
+    datasets: [
+      {
+        backgroundColor: COLORES_GRAFICOS.slice(0, datosPorActividad.size),
+        data: Array.from(datosPorActividad).map(([_, value]) => value),
+      },
+    ],
+  };
 };
