@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Chart from 'react-google-charts';
 import { Contrato } from '../../Models/contratos.model';
 import { DatosGrafico } from '../../Models/datos.model';
@@ -13,16 +13,17 @@ interface Props {
 }
 
 export const TarjetaGrafica: React.FC<Props> = ({ contratos, titulo, fnCalculo }) => {
+  const [datos] = useState<DatosGrafico>(fnCalculo(contratos));
+  const [costeTotal] = useState<number>(gastoTotal(datos));
+
   const pieChartOptions = {
-    pieHole: 0.2,
+    is3D: true,
   };
 
-  const datos: DatosGrafico = fnCalculo(contratos);
-  const costeTotal: number = gastoTotal(datos);
   return (
     <TarjetaGraficaWrapper>
       <TarjetaHeader>{titulo}</TarjetaHeader>
-      <Chart chartType="PieChart" options={{ pieChartOptions, is3D: true }} data={datos} />
+      <Chart chartType="PieChart" options={pieChartOptions} data={datos} />
       <PresupuestoTotal>Gasto total: {formatearCoste(costeTotal)}</PresupuestoTotal>
     </TarjetaGraficaWrapper>
   );
