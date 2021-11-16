@@ -13,17 +13,17 @@ export const TarjetaWrapper = styled.article`
   align-items: flex-start;
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
-    margin: 2rem auto;
+    margin: 2rem auto 0 auto;
     max-width: 90vw;
   }
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
-    margin: 2.5rem auto;
+    margin: 2.5rem auto 0 auto;
     max-width: 70vw;
   }
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.xlarge}) {
-    margin: 3rem auto;
+    margin: 3rem auto 0 auto;
     max-width: 60vw;
   }
 `;
