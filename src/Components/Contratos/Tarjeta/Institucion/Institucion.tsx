@@ -1,5 +1,5 @@
 import React from 'react';
-import { Institucion as InstitucionModel } from '../../../Models/contratos.model';
+import { Institucion as InstitucionModel } from '../../../../Models/contratos.model';
 import { InstitucionWrapper, StyledLabel, StyledListItem } from './Institucion.styled';
 
 export interface InstitucionProps {

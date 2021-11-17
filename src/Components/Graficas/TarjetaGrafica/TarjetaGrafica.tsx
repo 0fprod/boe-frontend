@@ -1,9 +1,9 @@
 import { TooltipItem } from 'chart.js';
 import React, { useState } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { Contrato } from '../../Models/contratos.model';
-import { DatosGrafico } from '../../Models/datos.model';
-import { formatearCoste } from '../../utils/utils';
+import { Contrato } from '../../../Models/contratos.model';
+import { DatosGrafico } from '../../../Models/datos.model';
+import { formatearCoste } from '../../../utils/utils';
 import { TarjetaGraficaWrapper, TarjetaHeader } from './TarjetaGrafica.styled';
 
 interface Props {

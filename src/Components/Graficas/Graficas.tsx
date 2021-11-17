@@ -4,8 +4,8 @@ import { gastoTotal, totalContratosPorActividad, totalContratosPorPymes } from '
 import { formatearCoste } from '../../utils/utils';
 import { Calendario } from '../Compartido/Calendario/Calendario';
 import { Cargando } from '../Compartido/Cargando/Cargando';
-import { TarjetaGrafica } from '../TarjetaGrafica/TarjetaGrafica';
 import { PresupuestoTotal } from './Graficas.styled';
+import { TarjetaGrafica } from './TarjetaGrafica/TarjetaGrafica';
 
 interface Props {
   contratos: Contrato[];

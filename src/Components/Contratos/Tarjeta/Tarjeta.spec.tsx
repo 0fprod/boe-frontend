@@ -1,6 +1,11 @@
 import React from 'react';
-import { renderWithTheme } from '../../../styles/theme.test.utils';
-import { construirBeneficiario, construirContrato, construirDetallesDeContrato, constuirInstitucion } from '../../Models/contratos.model';
+import { renderWithTheme } from '../../../../styles/theme.test.utils';
+import {
+  construirBeneficiario,
+  construirContrato,
+  construirDetallesDeContrato,
+  constuirInstitucion,
+} from '../../../Models/contratos.model';
 import { Tarjeta } from './Tarjeta';
 
 describe('Specs de Tarjeta', () => {

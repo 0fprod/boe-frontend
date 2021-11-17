@@ -2,8 +2,8 @@ import React from 'react';
 import { Contrato } from '../../Models/contratos.model';
 import { Calendario } from '../Compartido/Calendario/Calendario';
 import { Cargando } from '../Compartido/Cargando/Cargando';
-import { Tarjeta } from '../Tarjeta/Tarjeta';
 import { Mensaje } from './Contratos.styled';
+import { Tarjeta } from './Tarjeta/Tarjeta';
 
 interface Props {
   contratos: Contrato[];

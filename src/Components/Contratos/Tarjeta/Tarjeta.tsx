@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Contrato } from '../../Models/contratos.model';
-import { calcularTotal, formatearCoste, formatearFecha } from '../../utils/utils';
+import { Contrato } from '../../../Models/contratos.model';
+import { calcularTotal, formatearCoste, formatearFecha } from '../../../utils/utils';
 import { Beneficiarios } from './Beneficiarios/Beneficiarios';
 import { Institucion } from './Institucion/Institucion';
 import { StyledDescripcion, StyledLink, TarjetaHeader, TarjetaWrapper } from './Tarjeta.styled';

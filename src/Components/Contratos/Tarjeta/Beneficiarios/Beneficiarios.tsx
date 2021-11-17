@@ -1,6 +1,6 @@
 import React from 'react';
-import { Beneficiario } from '../../../Models/contratos.model';
-import { formatearCoste } from '../../../utils/utils';
+import { Beneficiario } from '../../../../Models/contratos.model';
+import { formatearCoste } from '../../../../utils/utils';
 import {
   BeneficarioItem,
   BeneficiariosWrapper,
