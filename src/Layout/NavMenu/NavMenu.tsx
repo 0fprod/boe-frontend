@@ -19,8 +19,8 @@ export const NavMenu: React.FC<Props> = ({}) => {
           </Link>
         </StyledLi>
         <StyledLi>
-          <Link href="/info" passHref>
-            <StyledAnchor>Info</StyledAnchor>
+          <Link href="/informacion" passHref>
+            <StyledAnchor>Informacion</StyledAnchor>
           </Link>
         </StyledLi>
       </StyledUl>
