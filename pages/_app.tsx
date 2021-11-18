@@ -2,7 +2,6 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import Logo from '../public/cplogo_128.png';
 import '../styles/globals.css';
 import { customTheme } from '../styles/theme.config';
 
@@ -17,8 +16,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:description" content="Queremos mostrar cuánto dinero público va destinado a qué empresas y para qué." />
         <meta property="og:url" content="https://boe-frontend.vercel.app/" />
         <meta property="og:site_name" content="Contrataciones del sector público" />
-        <meta property="og:image" content={Logo.src} />
-        <meta property="twitter:image:src" content={Logo.src} />
+        <meta property="og:image" content="https://boe-frontend.vercel.app/cplogo_128.png" />
+        <meta property="twitter:image:src" content="https://boe-frontend.vercel.app/cplogo_128.png" />
         <meta property="twitter:card" content="summary" />
       </Head>
       <ThemeProvider theme={customTheme}>
