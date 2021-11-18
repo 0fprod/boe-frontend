@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:url" content="https://boe-frontend.vercel.app/" />
         <meta property="og:site_name" content="Contrataciones del sector público" />
         <meta property="og:image" content={Logo.src} />
+        <meta property="twitter:image:src" content={Logo.src} />
         <meta property="twitter:card" content="summary" />
       </Head>
       <ThemeProvider theme={customTheme}>
