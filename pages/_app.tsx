@@ -15,7 +15,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="keywords" content="BOE, contratos públicos, estado, dinero, empresas" />
         <meta property="og:title" content="Contrataciones del sector público" />
         <meta property="og:description" content="Queremos mostrar cuánto dinero público va destinado a qué empresas y para qué." />
+        <meta property="og:url" content="https://boe-frontend.vercel.app/" />
+        <meta property="og:site_name" content="Contrataciones del sector público" />
         <meta property="og:image" content={Logo.src} />
+        <meta property="twitter:card" content="summary" />
       </Head>
       <ThemeProvider theme={customTheme}>
         <Component {...pageProps} />
