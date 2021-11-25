@@ -1,5 +1,6 @@
 import { construirBeneficiario } from '../Models/contratos.model';
-import { calcularTotal, formatearCoste, formatearFecha } from './utils';
+import { DatosGrafico } from '../Models/datos.model';
+import { calcularTotal, formatearCoste, formatearFecha, gastoTotal } from './utils';
 
 describe('Utils Specs', () => {
   it('Formatea un dígito añadiendole la moneda y separadores correctos', () => {
@@ -22,5 +23,17 @@ describe('Utils Specs', () => {
     const beneficiarios2 = [construirBeneficiario({ coste: 10 }), construirBeneficiario({ coste: 10 })];
     expect(calcularTotal(beneficiarios1)).toEqual(20);
     expect(calcularTotal(beneficiarios2)).toEqual(20);
+  });
+
+  it('Calcula el gasto total de los datos de un grafico', () => {
+    const datosGrafico: DatosGrafico = {
+      datasets: [
+        {
+          data: [1, 2, 3, 5],
+        },
+      ],
+      labels: [],
+    };
+    expect(gastoTotal(datosGrafico)).toEqual(11);
   });
 });
