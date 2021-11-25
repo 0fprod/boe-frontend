@@ -1,4 +1,9 @@
 import { Beneficiario } from '../Models/contratos.model';
+import { DatosGrafico } from '../Models/datos.model';
+
+export const gastoTotal = (datos: DatosGrafico) => {
+  return datos.datasets[0].data.reduce((costeAcumulado, coste) => (costeAcumulado += coste), 0);
+};
 
 export const calcularTotal = (coleccion: Beneficiario[]): number => {
   if (Array.isArray(coleccion) && coleccion.length) {
