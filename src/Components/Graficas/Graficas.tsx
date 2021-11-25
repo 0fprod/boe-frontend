@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DatosGrafico } from '../../Models/datos.model';
-import { gastoTotal } from '../../utils/calculos.estadisticas';
-import { formatearCoste } from '../../utils/utils';
+import { formatearCoste, gastoTotal } from '../../utils/utils';
 import { Calendario } from '../Compartido/Calendario/Calendario';
 import { Cargando } from '../Compartido/Cargando/Cargando';
 import { PresupuestoTotal } from './Graficas.styled';
