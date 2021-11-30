@@ -2,7 +2,10 @@ import { Beneficiario } from '../Models/contratos.model';
 import { DatosGrafico } from '../Models/datos.model';
 
 export const gastoTotal = (datos: DatosGrafico) => {
-  return datos.datasets[0].data.reduce((costeAcumulado, coste) => (costeAcumulado += coste), 0);
+  if (datos && datos.datasets && datos.datasets[0] && datos.datasets[0].data) {
+    return datos.datasets[0].data.reduce((costeAcumulado, coste) => (costeAcumulado += coste), 0);
+  }
+  return 0;
 };
 
 export const calcularTotal = (coleccion: Beneficiario[]): number => {
@@ -34,25 +37,32 @@ export const formatearFecha = (fechaEnIso: string): string => {
   }
 };
 
-export const COLORES_GRAFICOS: string[] = [
-  '#4c78a8',
-  '#9ecae9',
-  '#f58518',
-  '#ffbf79',
-  '#54a24b',
-  '#88d27a',
-  '#b79a20',
-  '#f2cf5b',
-  '#439894',
-  '#83bcb6',
-  '#e45756',
-  '#ff9d98',
-  '#79706e',
-  '#bab0ac',
-  '#d67195',
-  '#fcbfd2',
-  '#b279a2',
-  '#d6a5c9',
-  '#9e765f',
-  '#d8b5a5',
+export const COLORES_GRAFICOS = [
+  '#007EA7',
+  '#DB222A',
+  '#ED760E',
+  '#0b5d1e',
+  '#EA899A',
+  '#1F7A8C',
+  '#FAD201',
+  '#41ead4',
+  '#4D685A',
+  '#4FB286',
+  '#50FFB1',
+  '#755B69',
+  '#772D8B',
+  '#8FAD88',
+  '#96C5B0',
+  '#9D9171',
+  '#A31621',
+  '#ADF1D2',
+  '#B58DB6',
+  '#BFDBF7',
+  '#CBDF90',
+  '#D782BA',
+  '#E365C1',
+  '#E8D6CB',
+  '#FFA62B',
+  '#ff0022',
+  '#b91372',
 ];
