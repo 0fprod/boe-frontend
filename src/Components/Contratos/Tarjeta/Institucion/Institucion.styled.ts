@@ -8,6 +8,7 @@ interface Props {
 export const InstitucionWrapper = styled.ul`
   padding: 0 1rem;
   list-style-type: none;
+  position: relative;
 `;
 
 export const StyledLabel = styled.span`
@@ -30,4 +31,12 @@ export const StyledListItem = styled.li`
   @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
     font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
   }
+`;
+
+export const WrapperLabel = styled.li`
+  position: absolute;
+  top: -1rem;
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-position: under;
 `;

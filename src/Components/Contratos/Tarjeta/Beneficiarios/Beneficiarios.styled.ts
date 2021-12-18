@@ -7,15 +7,24 @@ interface Props {
 
 export const BeneficiariosWrapper = styled.ul`
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 100%;
   padding: 1rem;
   align-items: flex-start;
   list-style-type: none;
 
-  > li:nth-child(odd) {
+  > li:nth-child(even) {
     background-color: ${({ theme }: Props) => theme.colors.lightGray};
   }
+`;
+
+export const WrapperLabel = styled.li`
+  position: absolute;
+  top: -0.5rem;
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-position: under;
 `;
 
 export const BeneficarioItem = styled.li`

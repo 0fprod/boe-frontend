@@ -8,6 +8,7 @@ import {
   StyledBeneficiario,
   StyledLabel,
   StyledListItem,
+  WrapperLabel,
 } from './Beneficiarios.styled';
 
 export interface BeneficiariosProps {
@@ -21,6 +22,7 @@ export const Beneficiarios: React.FC<BeneficiariosProps> = ({ beneficiarios }) =
 
   return (
     <BeneficiariosWrapper>
+      <WrapperLabel>Adjudicatarios</WrapperLabel>
       {beneficiarios &&
         beneficiarios.length &&
         beneficiarios.map((b, i) => (

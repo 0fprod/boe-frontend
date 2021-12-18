@@ -1,6 +1,6 @@
 import React from 'react';
 import { Institucion as InstitucionModel } from '../../../../Models/contratos.model';
-import { InstitucionWrapper, StyledLabel, StyledListItem } from './Institucion.styled';
+import { InstitucionWrapper, StyledLabel, StyledListItem, WrapperLabel } from './Institucion.styled';
 
 export interface InstitucionProps {
   institucion: InstitucionModel;
@@ -10,6 +10,7 @@ export const Institucion: React.FC<InstitucionProps> = ({ institucion }) => {
   const { actividad, email, nif, nombre, telefono, tipoActividad, web } = institucion;
   return (
     <InstitucionWrapper>
+      <WrapperLabel>Institución adjudicadora</WrapperLabel>
       {actividad && (
         <StyledListItem>
           <StyledLabel>Actividad:</StyledLabel>

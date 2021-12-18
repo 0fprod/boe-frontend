@@ -28,6 +28,12 @@ const Contratos: NextPage<Props> = ({ contratos }) => {
     setCargando(false);
   }, [listaContratos]);
 
+  useEffect(() => {
+    setCargando(true);
+    const hoy = formatearFecha(new Date().toISOString());
+    ContratoService.getContratos(hoy).then(setListaContratos);
+  }, []);
+
   return (
     <Layout>
       <ListadoContratos contratos={listaContratos} obtenerContratosPorFecha={handleContrato} cargando={cargando} />
