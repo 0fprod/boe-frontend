@@ -3,6 +3,7 @@ import { Contrato } from '../../Models/contratos.model';
 import { Calendario } from '../Compartido/Calendario/Calendario';
 import { Cargando } from '../Compartido/Cargando/Cargando';
 import { Mensaje } from './Contratos.styled';
+import { ScrollTop } from './ScrollTop/ScrollTop';
 import { Tarjeta } from './Tarjeta/Tarjeta';
 
 interface Props {
@@ -15,6 +16,7 @@ export const ListadoContratos: React.FC<Props> = ({ contratos, obtenerContratosP
   const totalContratos = contratos && contratos.length;
   return (
     <React.Fragment>
+      <ScrollTop />
       <Calendario obtenerContratosPorFecha={obtenerContratosPorFecha} />
       {cargando && <Cargando />}
       {!cargando && totalContratos ? (
