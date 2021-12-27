@@ -66,7 +66,9 @@ export const TarjetaGrafica: React.FC<Props> = ({ titulo, formatoCoste, datos })
           },
         },
       },
-      ...defaultConfig.plugins?.tooltip,
+      tooltip: {
+        ...defaultConfig.plugins?.tooltip,
+      },
     },
   };
 
