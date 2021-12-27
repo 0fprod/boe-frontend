@@ -34,19 +34,9 @@ export const Graficas: React.FC<Props> = ({
       <PresupuestoTotal>
         Gasto total en la fecha: &nbsp; <span>{formatearCoste(costeTotal)}</span>
       </PresupuestoTotal>
-      <TarjetaGrafica titulo="Top empresas con más contratos" formatoCoste="digito" tipoGrafico="bar" datos={estadisticasBeneficiarios} />
-      <TarjetaGrafica
-        titulo="Presupuesto distribuido en PYMES y grandes empresas"
-        formatoCoste="moneda"
-        tipoGrafico="pie"
-        datos={estadisticasPymes}
-      />
-      <TarjetaGrafica
-        titulo="Presupuesto distribuido por actividad"
-        formatoCoste="moneda"
-        tipoGrafico="pie"
-        datos={estadisticasActividad}
-      />
+      <TarjetaGrafica titulo="Top empresas con más contratos" formatoCoste="digito" datos={estadisticasBeneficiarios} />
+      <TarjetaGrafica titulo="Presupuesto distribuido en PYMES y grandes empresas" formatoCoste="moneda" datos={estadisticasPymes} />
+      <TarjetaGrafica titulo="Presupuesto distribuido por actividad" formatoCoste="moneda" datos={estadisticasActividad} />
     </React.Fragment>
   );
 };
