@@ -1,4 +1,4 @@
-import { ChartOptions, ChartTypeRegistry, TooltipItem } from 'chart.js';
+import { TooltipItem } from 'chart.js';
 import React, { useCallback } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { isMobile } from 'react-device-detect';
@@ -33,7 +33,8 @@ export const TarjetaGrafica: React.FC<Props> = ({ titulo, formatoCoste, datos })
     [formatTooltip],
   );
 
-  const defaultConfig: ChartOptions<keyof ChartTypeRegistry> = {
+  // En build time any no da errores y el tipo real sí -> ChartOptions<keyof ChartTypeRegistry>
+  const defaultConfig: any = {
     responsive: true,
     layout: {
       padding: 10,
@@ -51,7 +52,8 @@ export const TarjetaGrafica: React.FC<Props> = ({ titulo, formatoCoste, datos })
       },
     },
   };
-  const mobileConfig: ChartOptions<keyof ChartTypeRegistry> = {
+  // En build time any no da errores y el tipo real sí -> ChartOptions<keyof ChartTypeRegistry>
+  const mobileConfig: any = {
     ...defaultConfig,
     plugins: {
       legend: {
