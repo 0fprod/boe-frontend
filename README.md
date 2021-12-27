@@ -47,4 +47,4 @@ npm run test:watch
 
 ## Licencia
 
-[license.md](BSD-3)
+[License.md](https://github.com/franjpr/boe-frontend/blob/main/license.md)
