@@ -9,6 +9,7 @@ export const TarjetaGraficaWrapper = styled.article`
   display: flex;
   flex-direction: column;
   margin: 1rem auto;
+  height: auto;
   background-color: ${({ theme }: Props) => theme.colors.foregroundLight};
   align-items: center;
 
@@ -19,12 +20,12 @@ export const TarjetaGraficaWrapper = styled.article`
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
     margin: 2.5rem auto 0 auto;
-    max-width: 70vw;
+    max-width: 60vw;
   }
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.xlarge}) {
     margin: 3rem auto 0 auto;
-    max-width: 60vw;
+    max-width: 50vw;
   }
 `;
 
