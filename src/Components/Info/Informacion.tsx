@@ -31,11 +31,6 @@ export const Informacion: React.FC<{}> = () => {
         <li> Dicha información se organiza y se guarda en una base de datos en formato JSON. </li>
         <li> Esta web obtiene la información de la base de datos para graficarla.</li>
       </ul>
-      <p>
-        El código del proyecto lo pueden ver en github, si alguien quiere colaborar o tiene alguna idea para implementar... estos son los
-        repositorios del <a href="https://github.com/franjpr/boe-backend">servidor</a> y del{' '}
-        <a href="https://github.com/franjpr/boe-frontend">cliente</a> por si quieres abrir alguna pull-request o lo que sea.
-      </p>
     </InformacionWrapper>
   );
 };
