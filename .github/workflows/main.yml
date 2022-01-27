@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v1
       - name: Running
         run: |
-          curl --request POST --url $FRONTURL'/api/cron' --header 'Authorization: Bearer '$SECRETAPI
+          curl --request --header 'Authorization: Bearer '$SECRETAPI POST --url $FRONTURL'/api/cron'
