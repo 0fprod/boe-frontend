@@ -15,7 +15,7 @@ const guardarContratosHoy = (): Promise<number> => {
   const query = formatearFecha(new Date().toISOString()).replace(/-/g, '');
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/boe/cron?id=${query}`;
 
-  return fetch(url, { method: 'get' })
+  return fetch(url, { method: 'get', headers: { 'Authorization' : 'Bearer ' + process.env.API_SECRET} })
     .then((response) => response.json())
     .catch(({ message, statusCode }) => ({ message: message ?? null, statusCode: statusCode ?? null }));
 };
