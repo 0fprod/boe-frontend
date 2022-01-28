@@ -16,6 +16,10 @@ export const Calendario: React.FC<CalendarioProps> = ({ obtenerContratosPorFecha
     const {
       target: { value },
     } = event;
+
+    if (new Date(value) > new Date(fechaFin)) {
+      setFechaFin(value);
+    }
     setFechaInicio(value);
   };
 
