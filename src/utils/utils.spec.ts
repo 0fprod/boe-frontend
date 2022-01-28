@@ -1,6 +1,6 @@
 import { construirBeneficiario } from '../Models/contratos.model';
 import { DatosGrafico } from '../Models/datos.model';
-import { calcularTotal, formatearCoste, formatearFecha, gastoTotal } from './utils';
+import { calcularTotal, formatearCoste, formatearFecha, gastoTotal, generarIdArticulos } from './utils';
 
 describe('Utils Specs', () => {
   it('Formatea un dígito añadiendole la moneda y separadores correctos', () => {
@@ -35,5 +35,14 @@ describe('Utils Specs', () => {
       labels: [],
     };
     expect(gastoTotal(datosGrafico)).toEqual(11);
+  });
+
+  it('Genera un Id en base a un valor monetario y una cadena de caracteres', () => {
+    const digito = 10.32;
+    const cadena = 'TSG-IN una cadena irrelevante [_] con símbolos-y signos de puntuacion. (y paréntesis)';
+
+    expect(generarIdArticulos(digito, cadena)).toEqual(
+      '1032-tsg-in-una-cadena-irrelevante-con-simbolos-y-signos-de-puntuacion-y-parentesis',
+    );
   });
 });
