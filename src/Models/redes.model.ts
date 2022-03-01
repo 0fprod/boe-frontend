@@ -1,3 +1,6 @@
+import { AddEthereumChainParameter } from '@web3-react/types';
+
+// Estructura de https://chainlist.org/chains.json
 export interface Red {
   name: string;
   chainId: number;
@@ -5,7 +8,7 @@ export interface Red {
   chain: string;
   network: string;
   networkId: number;
-  nativeCurrency: { name: string; symbol: string; decimals: number };
+  nativeCurrency: AddEthereumChainParameter['nativeCurrency'];
   rpc: string[];
   faucets: string[];
   infoURL: string;
@@ -13,3 +16,4 @@ export interface Red {
 
 export type EntornosDeRed = 'mainnet' | 'testnet';
 export type Redes = Record<EntornosDeRed, Red[]>;
+
