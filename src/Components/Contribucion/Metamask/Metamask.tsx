@@ -1,3 +1,4 @@
+import { AddEthereumChainParameter } from '@web3-react/types';
 import { useEffect } from 'react';
 import { hooks, metaMask } from '../../../Conectores/metamask';
 import { Conectar } from './Conectar/Conectar';
@@ -16,8 +17,8 @@ export const Metamask = () => {
     metaMask.connectEagerly();
   }, []);
 
-  const conectar = (idRed: number) => {
-    metaMask.activate(idRed);
+  const conectar = (red: AddEthereumChainParameter) => {
+    metaMask.activate(red);
   };
 
   const desconectar = () => {

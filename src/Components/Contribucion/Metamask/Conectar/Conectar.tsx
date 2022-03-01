@@ -1,10 +1,12 @@
 import { Web3ReactHooks } from '@web3-react/core';
+import { AddEthereumChainParameter } from '@web3-react/types';
+import { mapRedToAddEthereumChainParameter } from '../../../../Models/Mappers/redes.mapper';
 import { Red } from '../../../../Models/redes.model';
 import { REDES } from '../../../../utils/redes';
 import { SelectorDeRed } from './SelectorDeCadena';
 
 interface Props {
-  conectar: (idRed: number) => void;
+  conectar: (red: AddEthereumChainParameter) => void;
   desconectar: () => void;
   isActivating: ReturnType<Web3ReactHooks['useIsActivating']>;
   isActive: ReturnType<Web3ReactHooks['useIsActive']>;
@@ -15,11 +17,11 @@ export const Conectar = (props: Props) => {
   const entornoDeRedPorDefecto = process.env.NEXT_PUBLIC_CHAIN_ENV === 'testnet' ? 'testnet' : 'mainnet';
 
   const connect = () => {
-    conectar(REDES[entornoDeRedPorDefecto][0].chainId);
+    conectar(mapRedToAddEthereumChainParameter(REDES[entornoDeRedPorDefecto][0]));
   };
 
   const cambioDeRed = (chain: Red) => {
-    conectar(chain.chainId);
+    conectar(mapRedToAddEthereumChainParameter(chain))
   };
 
   if (isActive && !isActivating) {
