@@ -1,5 +1,6 @@
 import { ChangeEvent } from 'react';
-import { EntornosDeRed, REDES, Red } from '../../../../../redes';
+import { EntornosDeRed, Red } from '../../../../Models/redes.model';
+import { REDES } from '../../../../utils/redes';
 
 interface Props {
   cambioDeRed: (red: Red) => void;

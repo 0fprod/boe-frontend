@@ -1,6 +1,6 @@
 import type { Web3ReactHooks } from '@web3-react/core';
 import { useEffect, useState } from 'react';
-import { REDES } from '../../../../../redes';
+import { REDES } from '../../../../utils/redes';
 
 interface Props {
   isActivating: ReturnType<Web3ReactHooks['useIsActivating']>;

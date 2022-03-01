@@ -1,5 +1,6 @@
 import { Web3ReactHooks } from '@web3-react/core';
-import { Red, REDES } from '../../../../../redes';
+import { Red } from '../../../../Models/redes.model';
+import { REDES } from '../../../../utils/redes';
 import { SelectorDeRed } from './SelectorDeCadena';
 
 interface Props {
