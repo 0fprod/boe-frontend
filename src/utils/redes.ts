@@ -11,8 +11,8 @@ export const REDES: Redes = {
       networkId: 1,
       nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
       rpc: [
-        'https://mainnet.infura.io/v3/${INFURA_API_KEY}',
-        'wss://mainnet.infura.io/ws/v3/${INFURA_API_KEY}',
+        'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+        'wss://mainnet.infura.io/ws/v3/9aa3d95b3bc440fa88ea12eaa4456161',
         'https://api.mycryptoapi.com/eth',
         'https://cloudflare-eth.com',
       ],
@@ -67,8 +67,8 @@ export const REDES: Redes = {
       network: 'ropsten',
       networkId: 3,
       nativeCurrency: { name: 'Ropsten Ether', symbol: 'ROP', decimals: 18 },
-      rpc: ['https://ropsten.infura.io/v3/${INFURA_API_KEY}', 'wss://ropsten.infura.io/ws/v3/${INFURA_API_KEY}'],
-      faucets: ['https://faucet.ropsten.be?${ADDRESS}'],
+      rpc: ['https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'],
+      faucets: [],
       infoURL: 'https://github.com/ethereum/ropsten',
     },
     {
