@@ -1,4 +1,5 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { store } from '../../../../Conectores/metamask';
 import { EntornosDeRed, Red } from '../../../../Models/redes.model';
 import { REDES } from '../../../../utils/redes';
 
@@ -7,7 +8,9 @@ interface Props {
   entornoDeRedPorDefecto: EntornosDeRed;
 }
 export const SelectorDeRed = ({ cambioDeRed, entornoDeRedPorDefecto }: Props) => {
+  const { getState } = store;
   const redes = [...REDES[entornoDeRedPorDefecto]];
+  const [currentId] = useState(getState().chainId);
 
   const eventoDeCambioDeRed = (event: ChangeEvent<HTMLSelectElement>) => {
     const {
@@ -17,14 +20,14 @@ export const SelectorDeRed = ({ cambioDeRed, entornoDeRedPorDefecto }: Props) =>
     if (identificadorDeRed) cambioDeRed(identificadorDeRed);
   };
 
+
   return (
     <>
-      <select onChange={eventoDeCambioDeRed}>
+      <select onChange={eventoDeCambioDeRed} defaultValue={currentId}>
         {redes &&
           redes.map((red, index) => {
             return (
               <option key={index} value={red.chainId}>
-                {' '}
                 {red.name}
               </option>
             );
