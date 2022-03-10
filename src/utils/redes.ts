@@ -79,7 +79,7 @@ export const REDES: Redes = {
       network: 'testnet',
       networkId: 80001,
       nativeCurrency: { name: 'Matic', symbol: 'tMATIC', decimals: 18 },
-      rpc: ['https://rpc-mumbai.matic.today', 'wss://ws-mumbai.matic.today'],
+      rpc: ['https://rpc-mumbai.maticvigil.com/'],
       faucets: ['https://faucet.matic.network/'],
       infoURL: 'https://matic.network/',
     },

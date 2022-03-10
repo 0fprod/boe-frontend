@@ -27,8 +27,8 @@ export const Conectar = (props: Props) => {
   if (isActive && !isActivating) {
     return (
       <>
-        <SelectorDeRed {...{ cambioDeRed, entornoDeRedPorDefecto }} />
         <button onClick={desconectar}>Desconectar</button>
+        <SelectorDeRed {...{ cambioDeRed, entornoDeRedPorDefecto }} />
       </>
     );
   }
