@@ -1,14 +1,20 @@
-import { AddEthereumChainParameter, Web3ReactState } from '@web3-react/types';
-import { useEffect, useState } from 'react';
-import { hooks, metaMask, store } from '../../../Conectores/metamask';
+import { AddEthereumChainParameter } from '@web3-react/types';
+import { useEffect } from 'react';
+import { hooks, metaMask } from '../../../Conectores/metamask';
+import { RedProvider } from '../../../Context/red.context';
 import { Conectar } from './Conectar/Conectar';
-import { Cuenta } from './Conectar/Cuenta';
-import { Enviar } from './Conectar/Enviar';
-import { Estado } from './Conectar/Estado';
+import { Enviar } from './Enviar/Enviar';
+import { Estado } from './Estado/Estado';
+import { Logo } from './Logo/Logo';
+import { MetamaskWrapper, InputsWrapper } from './Metamask.styled';
 
 const { useIsActive, useIsActivating, useError, useChainId, useProvider, useAccount } = hooks;
-const { getState } = store;
-export const Metamask = () => {
+
+interface Props {
+  destinoRef: React.RefObject<HTMLInputElement>;
+}
+
+export const Metamask = ({ destinoRef }: Props) => {
   const isActivating = useIsActivating();
   const isActive = useIsActive();
   const error = useError();
@@ -30,13 +36,15 @@ export const Metamask = () => {
   };
 
   return (
-    <>
-      <Estado {...{ isActive, isActivating, error, chainId }} />
-      <br />
-      <Cuenta {...{ account, provider }} />
-      <br />
-      <Conectar isActivating={isActivating} isActive={isActive} conectar={conectar} desconectar={desconectar} />
-      <br/>
-    </>
+    <RedProvider>
+      <MetamaskWrapper>
+        <InputsWrapper>
+          <Conectar isActivating={isActivating} isActive={isActive} conectar={conectar} desconectar={desconectar} />
+          {isActive && <Enviar destinoRef={destinoRef} account={account} provider={provider} chainId={chainId} />}
+          <Estado {...{ isActive, isActivating, error }} />
+        </InputsWrapper>
+        <Logo />
+      </MetamaskWrapper>
+    </RedProvider>
   );
 };
