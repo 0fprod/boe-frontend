@@ -1,10 +1,11 @@
-import { useRef, useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { utils, BigNumber } from 'ethers';
 import { Web3ReactHooks } from '@web3-react/core';
 import { formatEther } from '@ethersproject/units';
 import { CantidadInput, EnviarWrapper, InputWrapper, Submit, SumbitWrapper } from './Enviar.styled';
 import { Red } from '../../../../Models/redes.model';
 import { RedContext } from '../../../../Context/red.context';
+import { PopUp } from './Popup';
 
 interface Props {
   provider: ReturnType<Web3ReactHooks['useProvider']>;
@@ -16,9 +17,8 @@ interface Props {
 export const Enviar = ({ provider, chainId, account, destinoRef }: Props) => {
   const [balance, setBalance] = useState<string>();
   const [tokenNativo, setTokenNativo] = useState<BigNumber>();
-  const [updateBalance, setUpdateBalance] = useState(false);
   const redActual = useContext<Red | undefined>(RedContext);
-
+  const [txHash, setTxHash] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,9 +32,11 @@ export const Enviar = ({ provider, chainId, account, destinoRef }: Props) => {
           value: tokenNativo,
           chainId,
         })
-        .then((x) => {
-          console.log('Tx', x);
-          setUpdateBalance(!updateBalance);
+        .then((tx) => {
+          setTxHash(tx.hash);
+          setTimeout(() => {
+            setTxHash('');
+          }, 4000);
         })
         .catch(console.error);
     }
@@ -58,21 +60,26 @@ export const Enviar = ({ provider, chainId, account, destinoRef }: Props) => {
         setBalance(formatEther(response));
       });
     }
-  }, [account, provider, updateBalance]);
+  }, [account, provider]);
 
   return (
-    <EnviarWrapper onSubmit={handleSubmit}>
-      <InputWrapper>
-        <label>Balance:</label>
-        <code>{balance?.substring(0,5)}&nbsp;{redActual && redActual.nativeCurrency.symbol}</code>
-      </InputWrapper>
-      <InputWrapper>
-        <label>Cantidad:</label>
-        <CantidadInput type="number" onChange={handleChange} step="any" />
-      </InputWrapper>
-      <SumbitWrapper>
-        <Submit type="submit" value="Enviar" />
-      </SumbitWrapper>
-    </EnviarWrapper>
+    <>
+      <EnviarWrapper onSubmit={handleSubmit}>
+        <InputWrapper>
+          <label>Balance:</label>
+          <code>
+            {balance?.substring(0, 5)}&nbsp;{redActual && redActual.nativeCurrency.symbol}
+          </code>
+        </InputWrapper>
+        <InputWrapper>
+          <label>Cantidad:</label>
+          <CantidadInput type="number" onChange={handleChange} step="any" />
+        </InputWrapper>
+        <SumbitWrapper>
+          <Submit type="submit" value="Enviar" />
+        </SumbitWrapper>
+      </EnviarWrapper>
+      <PopUp hash={txHash} />
+    </>
   );
 };
