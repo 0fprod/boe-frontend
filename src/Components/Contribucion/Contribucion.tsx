@@ -1,13 +1,25 @@
-import React, { useRef } from 'react';
-import { ContribucionWrapper, DestinoWrapper, DireccionDestino } from './Contribucion.styled';
+import React, { useRef, useState } from 'react';
+import { ContribucionWrapper, DestinoWrapper, DireccionDestino, InputWrapper, Tooltip } from './Contribucion.styled';
 import { Metamask } from './Metamask/Metamask';
 import Logo from '../../../public/metamask.png';
 import NextImage from 'next/image';
 import { useCheckMetamaskInstalled } from '../../Hooks/useEthereum';
+import Image from 'next/image';
+import CopyIcon from '../../../public/copy.png';
 
 export const Contribucion: React.FC<{}> = () => {
   const isMetamaskInstalled = useCheckMetamaskInstalled();
   const destinationRef = useRef<HTMLInputElement>(null);
+  const [mostrarTooltip, setMostrarTooltip] = useState(false);
+
+  const copiar = () => {
+    navigator.clipboard.writeText(destinationRef.current?.value ?? '');
+    setMostrarTooltip(true)
+    
+    setTimeout(() => {
+      setMostrarTooltip(false)
+    }, 1500)
+  }
 
   return (
     <ContribucionWrapper>
@@ -16,7 +28,7 @@ export const Contribucion: React.FC<{}> = () => {
         así me motivo para añadirle más funciones.
       </p>
       {isMetamaskInstalled ? (
-        <Metamask destinoRef={destinationRef}/>
+        <Metamask destinoRef={destinationRef} />
       ) : (
         <p>
           Instala
@@ -29,7 +41,11 @@ export const Contribucion: React.FC<{}> = () => {
       <br />
       <DestinoWrapper>
         <p>O envía cualquier token a esta dirección </p>
-        <DireccionDestino type="text" value="0x57d3564Fe77ae5f4787f5AdF70Df081c836f210C" disabled ref={destinationRef} />
+        <InputWrapper>
+          <DireccionDestino type="text" value="0x57d3564Fe77ae5f4787f5AdF70Df081c836f210C" disabled ref={destinationRef}/>
+          <Image src={CopyIcon} width={24} height={24} alt="copiar" onClick={copiar} title="awita"/>
+          { mostrarTooltip && <Tooltip>Copiado al portapapeles!</Tooltip> }
+        </InputWrapper>
       </DestinoWrapper>
     </ContribucionWrapper>
   );

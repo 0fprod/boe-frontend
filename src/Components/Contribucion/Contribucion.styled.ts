@@ -44,3 +44,29 @@ export const DireccionDestino = styled.input`
   width: 50%;
   padding:0.25rem;
 `
+
+export const InputWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  > input {
+    margin-right: 1rem;
+  }
+
+  img {
+    cursor: pointer;
+  }
+`
+
+export const Tooltip = styled.span`
+  display: flex;
+  position: absolute;
+  margin-top: 3rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.5rem;
+  background-color: azure;
+  font-size: ${({ theme }: Props) => theme.fonts.mobile.small.size};
+`
