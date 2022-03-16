@@ -13,6 +13,7 @@ export interface Red {
   faucets: string[];
   infoURL: string;
   logoURL?: string;
+  explorer: string;
 }
 
 export type EntornosDeRed = 'mainnet' | 'testnet';
