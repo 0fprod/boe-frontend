@@ -18,6 +18,7 @@ export const REDES: Redes = {
       ],
       faucets: [],
       infoURL: 'https://ethereum.org',
+      logoURL: '/eth.webp'
     },
     {
       name: 'Matic Mainnet',
@@ -30,6 +31,7 @@ export const REDES: Redes = {
       rpc: ['https://rpc-mainnet.matic.network', 'wss://ws-mainnet.matic.network'],
       faucets: [],
       infoURL: 'https://matic.network/',
+      logoURL: '/matic.webp'
     },
     {
       name: 'Binance Smart Chain Mainnet',
@@ -56,6 +58,7 @@ export const REDES: Redes = {
       ],
       faucets: [],
       infoURL: 'https://www.binance.org',
+      logoURL: '/bnb.webp'
     },
   ],
   testnet: [
@@ -70,6 +73,7 @@ export const REDES: Redes = {
       rpc: ['https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'],
       faucets: [],
       infoURL: 'https://github.com/ethereum/ropsten',
+      logoURL: '/eth.webp'
     },
     {
       name: 'Matic Testnet Mumbai',
@@ -82,6 +86,7 @@ export const REDES: Redes = {
       rpc: ['https://rpc-mumbai.maticvigil.com/'],
       faucets: ['https://faucet.matic.network/'],
       infoURL: 'https://matic.network/',
+      logoURL: '/matic.webp'
     },
     {
       name: 'Binance Smart Chain Testnet',
@@ -101,6 +106,7 @@ export const REDES: Redes = {
       ],
       faucets: ['https://testnet.binance.org/faucet-smart'],
       infoURL: 'https://testnet.binance.org/',
+      logoURL: '/bnb.webp'
     },
   ],
 };

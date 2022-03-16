@@ -12,6 +12,7 @@ export interface Red {
   rpc: string[];
   faucets: string[];
   infoURL: string;
+  logoURL?: string;
 }
 
 export type EntornosDeRed = 'mainnet' | 'testnet';
