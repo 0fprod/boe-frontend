@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { store } from '../../../../Conectores/metamask';
 import { EntornosDeRed, Red } from '../../../../Models/redes.model';
 import { REDES } from '../../../../utils/redes';
+import { Selector, SelectorWrapper } from './SelectorDeCadena.styled';
 
 interface Props {
   cambioDeRed: (red: Red) => void;
@@ -20,10 +21,10 @@ export const SelectorDeRed = ({ cambioDeRed, entornoDeRedPorDefecto }: Props) =>
     if (identificadorDeRed) cambioDeRed(identificadorDeRed);
   };
 
-
   return (
-    <>
-      <select onChange={eventoDeCambioDeRed} defaultValue={currentId}>
+    <SelectorWrapper>
+      <label> Cambiar de red: </label>
+      <Selector onChange={eventoDeCambioDeRed} defaultValue={currentId}>
         {redes &&
           redes.map((red, index) => {
             return (
@@ -32,7 +33,7 @@ export const SelectorDeRed = ({ cambioDeRed, entornoDeRedPorDefecto }: Props) =>
               </option>
             );
           })}
-      </select>
-    </>
+      </Selector>
+    </SelectorWrapper>
   );
 };
