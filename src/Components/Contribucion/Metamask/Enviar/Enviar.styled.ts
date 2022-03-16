@@ -6,7 +6,16 @@ interface Props {
 }
 
 export const EnviarWrapper = styled.form`
-  padding: 1.5rem;
+  padding: 0.5rem 0;
+  
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    padding: 0.5rem 0;
+  }
+  
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    padding: 0.5rem 0;
+  }
+
 `;
 
 export const InputWrapper = styled.div`
@@ -23,12 +32,12 @@ export const InputWrapper = styled.div`
 export const SumbitWrapper = styled.div`
   display: flex;
   padding: 2rem;
-`
+`;
 
 export const CantidadInput = styled.input`
   padding: 0.25rem;
   width: 7rem;
-`
+`;
 
 export const Submit = styled.input`
   margin: 0 auto;
@@ -51,4 +60,8 @@ export const Submit = styled.input`
   &:hover {
     background-color: ${({ theme }: Props) => theme.colors.secondary};
   }
+`;
+
+export const BalanceWrapper = styled.code`
+  display: flex;
 `;

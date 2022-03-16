@@ -43,7 +43,6 @@ export const Metamask = ({ destinoRef }: Props) => {
           {isActive && <Enviar destinoRef={destinoRef} account={account} provider={provider} chainId={chainId} />}
           <Estado {...{ isActive, isActivating, error }} />
         </InputsWrapper>
-        <Logo />
       </MetamaskWrapper>
     </RedProvider>
   );

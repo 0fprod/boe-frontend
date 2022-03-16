@@ -28,8 +28,8 @@ export const Conectar = (props: Props) => {
   if (isActive && !isActivating) {
     return (
       <ConectarWrapper>
-        <ConnectarBtn onClick={desconectar}>Desconectar</ConnectarBtn>
         <SelectorDeRed {...{ cambioDeRed, entornoDeRedPorDefecto }} />
+        <ConnectarBtn onClick={desconectar}>Desconectar</ConnectarBtn>
       </ConectarWrapper>
     );
   }

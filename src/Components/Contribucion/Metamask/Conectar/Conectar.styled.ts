@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { CustomTheme } from "../../../../../styles/theme/theme.model";
+import styled from 'styled-components';
+import { CustomTheme } from '../../../../../styles/theme/theme.model';
 
 interface Props {
   theme: CustomTheme;
@@ -8,7 +8,22 @@ interface Props {
 export const ConectarWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`
+  justify-content: space-between;
+  align-items: baseline;
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    flex-direction: row;
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.xlarge}) {
+    flex-direction: row;
+  }
+`;
 
 export const ConnectarBtn = styled.button`
   border: none;
@@ -18,7 +33,6 @@ export const ConnectarBtn = styled.button`
   background-color: ${({ theme }: Props) => theme.colors.primary};
   color: ${({ theme }: Props) => theme.colors.foregroundLight};
   font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
-  margin-bottom: 1rem;
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
     font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
@@ -31,4 +45,4 @@ export const ConnectarBtn = styled.button`
   &:hover {
     background-color: ${({ theme }: Props) => theme.colors.secondary};
   }
-`
+`;

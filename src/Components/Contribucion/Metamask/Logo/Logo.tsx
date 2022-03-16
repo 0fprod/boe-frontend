@@ -10,7 +10,7 @@ export const Logo = () => {
 
   return (
     <LogoWrapper>
-      <Image src={srcLogo} alt="chain logo" width={128} height={128} layout="intrinsic" />
+      <Image src={srcLogo} alt="chain logo" width={32} height={32} layout="intrinsic" />
     </LogoWrapper>
   );
 };

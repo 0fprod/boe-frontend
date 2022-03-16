@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { RedContext } from '../../../../Context/red.context';
 import { Red } from '../../../../Models/redes.model';
 import { StyledPopUp } from './Popup.styled';

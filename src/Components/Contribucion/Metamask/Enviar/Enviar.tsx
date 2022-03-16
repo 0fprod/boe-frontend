@@ -2,10 +2,11 @@ import { useState, useEffect, useContext } from 'react';
 import { utils, BigNumber } from 'ethers';
 import { Web3ReactHooks } from '@web3-react/core';
 import { formatEther } from '@ethersproject/units';
-import { CantidadInput, EnviarWrapper, InputWrapper, Submit, SumbitWrapper } from './Enviar.styled';
+import { BalanceWrapper, CantidadInput, EnviarWrapper, InputWrapper, Submit, SumbitWrapper } from './Enviar.styled';
 import { Red } from '../../../../Models/redes.model';
 import { RedContext } from '../../../../Context/red.context';
 import { PopUp } from './Popup';
+import { Logo } from '../Logo/Logo';
 
 interface Props {
   provider: ReturnType<Web3ReactHooks['useProvider']>;
@@ -67,9 +68,10 @@ export const Enviar = ({ provider, chainId, account, destinoRef }: Props) => {
       <EnviarWrapper onSubmit={handleSubmit}>
         <InputWrapper>
           <label>Balance:</label>
-          <code>
-            {balance?.substring(0, 5)}&nbsp;{redActual && redActual.nativeCurrency.symbol}
-          </code>
+          <BalanceWrapper>
+            {balance?.substring(0, 5)} 
+          <Logo/>
+          </BalanceWrapper>
         </InputWrapper>
         <InputWrapper>
           <label>Cantidad:</label>

@@ -1,11 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MetamaskWrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding: 1rem;
-  background-color: #F0FFFF;
-`
+  background-color: #f0ffff;
+  margin: 0 auto;
+`;
 
 export const InputsWrapper = styled.div`
   display: flex;
@@ -13,5 +14,4 @@ export const InputsWrapper = styled.div`
   justify-content: space-around;
   flex: 1;
   position: relative;
-`
-
+`;
