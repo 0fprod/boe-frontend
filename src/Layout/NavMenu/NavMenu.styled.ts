@@ -21,9 +21,9 @@ export const StyledUl = styled.ul`
 `;
 
 export const StyledLi = styled.li`
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   color: ${({ theme }: Props) => theme.colors.foregroundLight};
-  font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
+  font-size: 0.8rem;
   height: 100%;
   align-items: center;
   display: flex;
