@@ -3,6 +3,7 @@ import { AddEthereumChainParameter } from '@web3-react/types';
 import { mapRedToAddEthereumChainParameter } from '../../../../Models/Mappers/redes.mapper';
 import { Red } from '../../../../Models/redes.model';
 import { REDES } from '../../../../utils/redes';
+import { ConectarWrapper, ConnectarBtn } from './Conectar.styled';
 import { SelectorDeRed } from './SelectorDeCadena';
 
 interface Props {
@@ -26,18 +27,18 @@ export const Conectar = (props: Props) => {
 
   if (isActive && !isActivating) {
     return (
-      <>
-        <button onClick={desconectar}>Desconectar</button>
+      <ConectarWrapper>
+        <ConnectarBtn onClick={desconectar}>Desconectar</ConnectarBtn>
         <SelectorDeRed {...{ cambioDeRed, entornoDeRedPorDefecto }} />
-      </>
+      </ConectarWrapper>
     );
   }
 
   return (
-    <>
-      <button onClick={connect} disabled={isActivating}>
+    <ConectarWrapper>
+      <ConnectarBtn onClick={connect} disabled={isActivating}>
         Conectar
-      </button>
-    </>
+      </ConnectarBtn>
+    </ConectarWrapper>
   );
 };
