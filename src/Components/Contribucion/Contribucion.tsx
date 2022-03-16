@@ -1,5 +1,5 @@
-import React from 'react';
-import { ContribucionWrapper } from './Contribucion.styled';
+import React, { useRef } from 'react';
+import { ContribucionWrapper, DestinoWrapper, DireccionDestino } from './Contribucion.styled';
 import { Metamask } from './Metamask/Metamask';
 import Logo from '../../../public/metamask.png';
 import NextImage from 'next/image';
@@ -7,6 +7,7 @@ import { useCheckMetamaskInstalled } from '../../Hooks/useEthereum';
 
 export const Contribucion: React.FC<{}> = () => {
   const isMetamaskInstalled = useCheckMetamaskInstalled();
+  const destinationRef = useRef<HTMLInputElement>(null);
 
   return (
     <ContribucionWrapper>
@@ -15,7 +16,7 @@ export const Contribucion: React.FC<{}> = () => {
         así me motivo para añadirle más funciones.
       </p>
       {isMetamaskInstalled ? (
-        <Metamask />
+        <Metamask destinoRef={destinationRef}/>
       ) : (
         <p>
           Instala
@@ -25,8 +26,11 @@ export const Contribucion: React.FC<{}> = () => {
           para contribuir
         </p>
       )}
-      <p>o</p>
-      <p>Buy me a coffee!</p>
+      <br />
+      <DestinoWrapper>
+        <p>O envía cualquier token a esta dirección </p>
+        <DireccionDestino type="text" value="0x57d3564Fe77ae5f4787f5AdF70Df081c836f210C" disabled ref={destinationRef} />
+      </DestinoWrapper>
     </ContribucionWrapper>
   );
 };

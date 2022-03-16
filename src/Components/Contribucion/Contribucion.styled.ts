@@ -14,14 +14,9 @@ export const ContribucionWrapper = styled.article`
     text-decoration: underline;
   }
 
-  img {
-    width: ${({ theme }: Props) => theme.fonts.mobile.body.size} !important;
-    height: ${({ theme }: Props) => theme.fonts.mobile.body.size} !important;
-  }
-
   font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
 
-  span {
+  > span {
     color: ${({ theme }: Props) => theme.colors.error};
   }
 
@@ -29,20 +24,23 @@ export const ContribucionWrapper = styled.article`
     font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
     padding: 2rem;
     max-width: 80vw;
-
-    img {
-      width: ${({ theme }: Props) => theme.fonts.tablet.body.size} !important;
-      height: ${({ theme }: Props) => theme.fonts.tablet.body.size} !important;
-    }
   }
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
     font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
     padding: 4rem;
     max-width: 70vw;
+  }
+`
 
-    img {
-      width: ${({ theme }: Props) => theme.fonts.desktop.body.size} !important;
-      height: ${({ theme }: Props) => theme.fonts.desktop.body.size} !important;
-    }
-  }`
+export const DestinoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const DireccionDestino = styled.input`
+  width: 50%;
+  padding:0.25rem;
+`
