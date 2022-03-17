@@ -5,5 +5,5 @@ export const LogoWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  margin: 0 0.5rem;
 `;

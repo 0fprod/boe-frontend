@@ -1,7 +1,6 @@
 import type { Web3ReactHooks } from '@web3-react/core';
 import { useContext, useEffect, useState } from 'react';
-import { RedContext } from '../../../../Context/red.context';
-import { Red } from '../../../../Models/redes.model';
+import { MetamaskContext } from '../../../../Context/metamask.context';
 import { EstadoWrapper } from './Estado.styled';
 
 interface Props {
@@ -12,12 +11,12 @@ interface Props {
 
 export const Estado = (props: Props) => {
   const { error, isActivating, isActive } = props;
-  const redActual = useContext<Red | undefined>(RedContext);
+  const { red } = useContext(MetamaskContext);
   const [name, setName] = useState('');
 
   useEffect(() => {
-    if (redActual) setName(`"${redActual.name}"`);
-  }, [redActual]);
+    if (red) setName(`"${red.name}"`);
+  }, [red]);
 
   if (error) {
     return <EstadoWrapper>🔴 {error.message}</EstadoWrapper>;

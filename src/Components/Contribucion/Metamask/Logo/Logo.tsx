@@ -1,15 +1,14 @@
 import Image from 'next/image';
 import { useContext } from 'react';
-import { RedContext } from '../../../../Context/red.context';
-import { Red } from '../../../../Models/redes.model';
+import { MetamaskContext } from '../../../../Context/metamask.context';
 import { LogoWrapper } from './Logo.styled';
 
 interface Props {
   size: number;
 }
 export const Logo = ({ size }: Props) => {
-  const redActual = useContext<Red | undefined>(RedContext);
-  const srcLogo = redActual && redActual.logoURL ? redActual.logoURL : '/default.webp';
+  const { red } = useContext(MetamaskContext);
+  const srcLogo = red && red.logoURL ? red.logoURL : '/default.webp';
 
   return (
     <LogoWrapper>

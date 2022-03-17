@@ -1,15 +1,16 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { store } from '../../../../Conectores/metamask';
-import { EntornosDeRed, Red } from '../../../../Models/redes.model';
+import { Red } from '../../../../Models/redes.model';
 import { REDES } from '../../../../utils/redes';
 import { Selector, SelectorWrapper } from './SelectorDeCadena.styled';
 
 interface Props {
   cambioDeRed: (red: Red) => void;
-  entornoDeRedPorDefecto: EntornosDeRed;
 }
-export const SelectorDeRed = ({ cambioDeRed, entornoDeRedPorDefecto }: Props) => {
+
+export const SelectorDeRed = ({ cambioDeRed }: Props) => {
   const { getState } = store;
+  const entornoDeRedPorDefecto = process.env.NEXT_PUBLIC_CHAIN_ENV === 'testnet' ? 'testnet' : 'mainnet';
   const redes = [...REDES[entornoDeRedPorDefecto]];
   const [currentId] = useState(getState().chainId);
 
@@ -17,8 +18,8 @@ export const SelectorDeRed = ({ cambioDeRed, entornoDeRedPorDefecto }: Props) =>
     const {
       target: { value },
     } = event;
-    const identificadorDeRed = REDES[entornoDeRedPorDefecto].find((chain: Red) => chain.chainId === Number(value));
-    if (identificadorDeRed) cambioDeRed(identificadorDeRed);
+    const red = REDES[entornoDeRedPorDefecto].find((chain: Red) => chain.chainId === Number(value));
+    if (red) cambioDeRed(red);
   };
 
   return (

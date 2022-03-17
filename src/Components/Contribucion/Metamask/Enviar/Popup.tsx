@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-import { RedContext } from '../../../../Context/red.context';
-import { Red } from '../../../../Models/redes.model';
+import { MetamaskContext } from '../../../../Context/metamask.context';
 import { StyledPopUp } from './Popup.styled';
 
 interface Props {
@@ -8,8 +7,8 @@ interface Props {
 }
 
 export const PopUp = ({ hash }: Props) => {
-  const redActual = useContext<Red | undefined>(RedContext);
-  const blockScanner = redActual ? `${redActual.explorer}tx/${hash}` : '';
+  const {red} = useContext(MetamaskContext);
+  const blockScanner = red ? `${red.explorer}tx/${hash}` : '';
 
   return (
     <>
