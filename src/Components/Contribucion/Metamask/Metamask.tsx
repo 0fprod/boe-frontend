@@ -24,11 +24,20 @@ export const Metamask = ({ destinoRef }: Props) => {
 
   useEffect(() => {
     // Se conecta al metamask, a la red que tenga permiso de conexion concedido a este dominio
-    metaMask.connectEagerly();
+    metaMask
+      .connectEagerly()
+      .then((_) => {
+        console.log('Metamask connected');
+      })
+      .catch((e) => {
+        console.error('Could not connect metamask eagerly -> ', e);
+      });
   }, []);
 
   const conectar = (red: AddEthereumChainParameter) => {
-    metaMask.activate(red);
+    metaMask.activate(red).catch((e) => {
+      console.error('Could not activate metamask ->', e);
+    });
   };
 
   const desconectar = () => {

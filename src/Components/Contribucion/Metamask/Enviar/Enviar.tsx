@@ -18,7 +18,6 @@ interface Props {
 export const Enviar = ({ provider, chainId, account, destinoRef }: Props) => {
   const [balance, setBalance] = useState<string>();
   const [tokenNativo, setTokenNativo] = useState<BigNumber>();
-  const redActual = useContext<Red | undefined>(RedContext);
   const [txHash, setTxHash] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -69,8 +68,8 @@ export const Enviar = ({ provider, chainId, account, destinoRef }: Props) => {
         <InputWrapper>
           <label>Balance:</label>
           <BalanceWrapper>
-            {balance?.substring(0, 5)} 
-          <Logo/>
+            {balance ? balance.substring(0, 5) : '...'} &nbsp;
+          <Logo size={24}/>
           </BalanceWrapper>
         </InputWrapper>
         <InputWrapper>
