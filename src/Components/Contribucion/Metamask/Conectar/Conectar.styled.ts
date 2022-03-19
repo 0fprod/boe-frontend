@@ -25,7 +25,7 @@ export const ConectarWrapper = styled.div`
   }
 `;
 
-export const ConnectarBtn = styled.button`
+export const ConectarBtn = styled.button`
   border: none;
   cursor: pointer;
   padding: 0.25rem;
@@ -44,5 +44,27 @@ export const ConnectarBtn = styled.button`
 
   &:hover {
     background-color: ${({ theme }: Props) => theme.colors.secondary};
+  }
+`;
+
+export const DesconectarBtn = styled.button`
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  width: 10rem;
+  background-color: ${({ theme }: Props) => theme.colors.warning};
+  color: ${({ theme }: Props) => theme.colors.foregroundLight};
+  font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
+  }
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
+  }
+
+  &:hover {
+    background-color: ${({ theme }: Props) => theme.colors.error};
   }
 `;

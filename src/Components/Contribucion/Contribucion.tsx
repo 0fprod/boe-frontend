@@ -6,6 +6,7 @@ import NextImage from 'next/image';
 import { useCheckMetamaskInstalled } from '../../Hooks/useEthereum';
 import Image from 'next/image';
 import CopyIcon from '../../../public/copy.png';
+import { ContextProvider } from '../../Context/metamask.context';
 
 export const Contribucion: React.FC<{}> = () => {
   const isMetamaskInstalled = useCheckMetamaskInstalled();
@@ -28,14 +29,16 @@ export const Contribucion: React.FC<{}> = () => {
         así me motivo para añadirle más funciones.
       </p>
       {isMetamaskInstalled ? (
-        <Metamask destinoRef={destinationRef} />
+        <ContextProvider>
+          <Metamask destinoRef={destinationRef} />
+        </ContextProvider>
       ) : (
         <p>
           Instala{' '}
           <a href="https://metamask.io/" target="_blank" rel="noreferrer">
             <NextImage src={Logo} /> Metamask
-          </a>
-          {' '}para contribuir
+          </a>{' '}
+          para contribuir
         </p>
       )}
       <br />

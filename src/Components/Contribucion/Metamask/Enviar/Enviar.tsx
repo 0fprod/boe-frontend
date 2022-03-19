@@ -4,7 +4,7 @@ import { Web3ReactHooks } from '@web3-react/core';
 import { formatEther } from '@ethersproject/units';
 import { BalanceWrapper, CantidadInput, EnviarWrapper, InputWrapper, Submit, SumbitWrapper } from './Enviar.styled';
 import { PopUp } from './Popup';
-import { Logo } from '../Logo/Logo';
+import { Logo } from './Logo';
 
 interface Props {
   provider: ReturnType<Web3ReactHooks['useProvider']>;

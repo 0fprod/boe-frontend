@@ -1,7 +1,7 @@
 import { AddEthereumChainParameter } from '@web3-react/types';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { hooks, metaMask } from '../../../Conectores/metamask';
-import { ContextProvider } from '../../../Context/metamask.context';
+import { ContextProvider, MetamaskContext } from '../../../Context/metamask.context';
 import { Conectar } from './Conectar/Conectar';
 import { Enviar } from './Enviar/Enviar';
 import { Estado } from './Estado/Estado';
@@ -20,6 +20,7 @@ export const Metamask = ({ destinoRef }: Props) => {
   const chainId = useChainId();
   const account = useAccount();
   const provider = useProvider();
+  const { cambiarRedPorChainId } = useContext(MetamaskContext);
 
   useEffect(() => {
     // Se conecta al metamask, a la red que tenga permiso de conexion concedido a este dominio
@@ -33,6 +34,10 @@ export const Metamask = ({ destinoRef }: Props) => {
       });
   }, []);
 
+  useEffect(() => {
+    cambiarRedPorChainId(chainId);
+  }, [chainId, cambiarRedPorChainId]);
+
   const conectar = (red: AddEthereumChainParameter) => {
     metaMask.activate(red).catch((e) => {
       console.error('Could not activate metamask ->', e);
@@ -44,14 +49,12 @@ export const Metamask = ({ destinoRef }: Props) => {
   };
 
   return (
-    <ContextProvider>
       <MetamaskWrapper>
         <InputsWrapper>
-          <Conectar isActivating={isActivating} isActive={isActive} conectar={conectar} desconectar={desconectar} />
+          <Conectar {...{ isActivating, isActive, conectar, desconectar, provider }} />
           {isActive && <Enviar destinoRef={destinoRef} account={account} provider={provider} chainId={chainId} />}
-          <Estado {...{ isActive, isActivating, error }} />
+          <Estado {...{ isActive, isActivating, error, provider }} />
         </InputsWrapper>
       </MetamaskWrapper>
-    </ContextProvider>
   );
 };

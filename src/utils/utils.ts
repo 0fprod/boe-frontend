@@ -1,5 +1,6 @@
 import { Beneficiario } from '../Models/contratos.model';
 import { DatosGrafico } from '../Models/datos.model';
+import { Red } from '../Models/redes.model';
 
 export const gastoTotal = (datos: DatosGrafico) => {
   if (datos && datos.datasets && datos.datasets[0] && datos.datasets[0].data) {
@@ -47,6 +48,8 @@ export const generarIdArticulos = (coste: number, nombreInstitucion: string): st
   const nombreKebabCase = nombreSinSimbolos.replace(/\s+/g, '-');
   return `${costeSinSimbolos}-${nombreKebabCase}`;
 };
+
+export const getRedPorChainId = (redes: Red[], chainId: number) => redes.find((r) => r.chainId === chainId);
 
 export const COLORES_GRAFICOS = [
   '#007EA7',
