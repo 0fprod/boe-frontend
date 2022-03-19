@@ -1,7 +1,7 @@
 import { AddEthereumChainParameter } from '@web3-react/types';
 import { useContext, useEffect } from 'react';
 import { hooks, metaMask } from '../../../Conectores/metamask';
-import { ContextProvider, MetamaskContext } from '../../../Context/metamask.context';
+import { MetamaskContext } from '../../../Context/metamask.context';
 import { Conectar } from './Conectar/Conectar';
 import { Enviar } from './Enviar/Enviar';
 import { Estado } from './Estado/Estado';
@@ -51,7 +51,7 @@ export const Metamask = ({ destinoRef }: Props) => {
   return (
       <MetamaskWrapper>
         <InputsWrapper>
-          <Conectar {...{ isActivating, isActive, conectar, desconectar, provider }} />
+          <Conectar {...{ isActivating, isActive, conectar, desconectar }} />
           {isActive && <Enviar destinoRef={destinoRef} account={account} provider={provider} chainId={chainId} />}
           <Estado {...{ isActive, isActivating, error, provider }} />
         </InputsWrapper>
