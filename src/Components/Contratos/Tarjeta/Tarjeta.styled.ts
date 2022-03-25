@@ -30,6 +30,7 @@ export const TarjetaWrapper = styled.article`
 
 export const TarjetaHeader = styled.header`
   width: 100%;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -54,6 +55,12 @@ export const TarjetaHeader = styled.header`
   }
 `;
 
+export const CopiarEnlace = styled.span`
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+`;
+
 export const StyledLink = styled.a`
   text-decoration: none;
   padding: 1rem;
@@ -74,4 +81,18 @@ export const StyledDescripcion = styled.p`
   @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
     font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
   }
+`;
+
+export const Tooltip = styled.span`
+  display: flex;
+  position: absolute;
+  right: 0;
+  width: 15rem;
+  top: -2.5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.5rem;
+  background-color: azure;
+  font-size: ${({ theme }: Props) => theme.fonts.mobile.small.size};
 `;
