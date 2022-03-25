@@ -26,7 +26,7 @@ export const Contribucion: React.FC<{}> = () => {
     <ContribucionWrapper>
       <p>
         Esto me ha llevado un tiempo desarrollarlo, así que si alguno cree que le es útil puede contribuir con cualquier aporte (☕,🍕) y
-        así me motivo para añadirle más funciones.
+        así me animo para añadirle más funciones.
       </p>
       {isMetamaskInstalled ? (
         <ContextProvider>
