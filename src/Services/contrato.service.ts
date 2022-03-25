@@ -20,7 +20,17 @@ const guardarContratosHoy = (): Promise<number> => {
     .catch(({ message, statusCode }) => ({ message: message ?? null, statusCode: statusCode ?? null }));
 };
 
+const getContratoPorBoeId = (boeId: string) : Promise<Contrato> => {
+
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/contratos/contrato/${boeId}`;
+
+  return fetch(url, { method: 'get' })
+  .then((response) => response.json())
+  .catch(({ message, statusCode }) => ({ message: message ?? null, statusCode: statusCode ?? null }));
+}
+
 export const ContratoService = {
   getContratos,
   guardarContratosHoy,
+  getContratoPorBoeId
 };
