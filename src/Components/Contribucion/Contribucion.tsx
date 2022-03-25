@@ -5,7 +5,7 @@ import Logo from '../../../public/metamask.png';
 import NextImage from 'next/image';
 import { useCheckMetamaskInstalled } from '../../Hooks/useEthereum';
 import Image from 'next/image';
-import CopyIcon from '../../../public/copy.png';
+import CopyIcon from '/public/copy.png';
 import { ContextProvider } from '../../Context/metamask.context';
 
 export const Contribucion: React.FC<{}> = () => {
