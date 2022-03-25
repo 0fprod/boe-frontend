@@ -4,9 +4,8 @@ import { calcularTotal, formatearCoste, formatearFecha, generarIdArticulos } fro
 import { Beneficiarios } from './Beneficiarios/Beneficiarios';
 import { Institucion } from './Institucion/Institucion';
 import { CopiarEnlace, StyledDescripcion, StyledLink, TarjetaHeader, TarjetaWrapper, Tooltip } from './Tarjeta.styled';
-import CopyIcon from '/public/copy.png';
+import CopyIcon from '/public/copy-link.png';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 export interface TarjetaProps {
   contrato: Contrato;
 }
@@ -43,7 +42,7 @@ export const Tarjeta: React.FC<TarjetaProps> = ({ contrato }) => {
         <span aria-label="coste total">{formatearCoste(costeTotal)}</span>
         <CopiarEnlace onClick={copiar}>
           {mostrarTooltip && <Tooltip>Enlace copiado al portapapeles!</Tooltip>}
-          <Image src={CopyIcon} width={24} height={24} alt="copiar enlace" />
+          <Image src={CopyIcon} width={24} height={24} alt="copiar enlace" title='Copiar enlace'/>
         </CopiarEnlace>
       </TarjetaHeader>
       <Institucion institucion={institucion} />
