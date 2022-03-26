@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { StateProvider } from '../src/Context/contratos.context';
 import '../styles/globals.css';
 import { customTheme } from '../styles/theme.config';
 
@@ -21,7 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="twitter:card" content="summary" />
       </Head>
       <ThemeProvider theme={customTheme}>
-        <Component {...pageProps} />
+        <StateProvider>
+          <Component {...pageProps} />
+        </StateProvider>
       </ThemeProvider>
     </React.Fragment>
   );
