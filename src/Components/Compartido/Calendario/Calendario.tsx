@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { formatearFecha } from '../../../utils/utils';
+import React, { useContext, useState } from 'react';
+import { AppContext } from '../../../Context/contratos.context';
 import { ButtonWrapper, CalendarioWrapper, InputGroup, InputsWrapper, StyledButton, StyledInput, StyledLabel } from './Calendario.styled';
 
 export interface CalendarioProps {
@@ -8,9 +8,9 @@ export interface CalendarioProps {
 
 export const Calendario: React.FC<CalendarioProps> = ({ obtenerContratosPorFecha }) => {
   const fechaMinima = '2021-01-01';
-  const fechaMaxima = formatearFecha(new Date().toISOString());
-  const [fechaInicio, setFechaInicio] = useState<string>(formatearFecha(new Date().toISOString()));
-  const [fechaFin, setFechaFin] = useState<string>('');
+  const { query } = useContext(AppContext);
+  const [fechaInicio, setFechaInicio] = useState<string>(query.inicio);
+  const [fechaFin, setFechaFin] = useState<string>(query.final ?? '');
 
   const fechaInicioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
