@@ -3,7 +3,7 @@ import { DatosGrafico } from '../../Models/datos.model';
 import { formatearCoste, gastoTotal } from '../../utils/utils';
 import { Calendario } from '../Compartido/Calendario/Calendario';
 import { Cargando } from '../Compartido/Cargando/Cargando';
-import { PresupuestoTotal } from './Graficas.styled';
+import { GraficasWrapper, PresupuestoTotal } from './Graficas.styled';
 import { TarjetaGrafica } from './TarjetaGrafica/TarjetaGrafica';
 
 interface Props {
@@ -34,9 +34,11 @@ export const Graficas: React.FC<Props> = ({
       <PresupuestoTotal>
         Gasto total en la fecha: &nbsp; <span>{formatearCoste(costeTotal)}</span>
       </PresupuestoTotal>
-      <TarjetaGrafica titulo="Top empresas con más contratos" formatoCoste="digito" datos={estadisticasBeneficiarios} />
-      <TarjetaGrafica titulo="Presupuesto distribuido en PYMES y grandes empresas" formatoCoste="moneda" datos={estadisticasPymes} />
-      <TarjetaGrafica titulo="Presupuesto distribuido por actividad" formatoCoste="moneda" datos={estadisticasActividad} />
+      <GraficasWrapper>
+        <TarjetaGrafica titulo="Top empresas con más contratos" formatoCoste="digito" datos={estadisticasBeneficiarios} />
+        <TarjetaGrafica titulo="Presupuesto en PYMES y grandes empresas" formatoCoste="moneda" datos={estadisticasPymes} />
+        <TarjetaGrafica titulo="Presupuesto distribuido por actividad" formatoCoste="moneda" datos={estadisticasActividad} />
+      </GraficasWrapper>
     </React.Fragment>
   );
 };

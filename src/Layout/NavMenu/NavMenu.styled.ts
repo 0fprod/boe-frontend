@@ -39,6 +39,15 @@ export const StyledLi = styled.li`
   &:hover {
     background-color: ${({ theme }: Props) => theme.colors.secondary};
   }
+
+  &:last-child {
+    background-color: white;
+    a {
+      display: flex;
+      align-items: center;
+      color: ${({ theme }: Props) => theme.colors.warning};
+    }
+  }
 `;
 
 export const StyledAnchor = styled.a``;

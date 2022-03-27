@@ -26,3 +26,13 @@ export const PresupuestoTotal = styled.div`
     font-size: ${({ theme }: Props) => theme.fonts.desktop.intro.size};
   }
 `;
+
+export const GraficasWrapper = styled.section`
+  padding-bottom: 2rem;
+
+  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+`;

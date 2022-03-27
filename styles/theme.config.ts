@@ -19,13 +19,13 @@ export const customTheme: CustomTheme = {
   },
   fonts: {
     desktop: {
-      intro: { size: '1.75rem' },
-      body: { size: '1.5rem' },
+      intro: { size: '1.5rem' },
+      body: { size: '1.375rem' },
       small: { size: '1rem' },
     },
     tablet: {
-      intro: { size: '1.5rem' },
-      body: { size: '1.25rem' },
+      intro: { size: '1.327rem' },
+      body: { size: '1.125rem' },
       small: { size: '0.875rem' },
     },
     mobile: {

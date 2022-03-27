@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
 import { StyledAnchor, StyledLi, StyledNav, StyledUl } from './NavMenu.styled';
-interface Props { }
+import MetamaskIcon from '/public/metamask.png';
+import Image from 'next/image';
 
+interface Props {}
 
-export const NavMenu: React.FC<Props> = ({ }) => {
+export const NavMenu: React.FC<Props> = ({}) => {
   return (
     <StyledNav>
       <StyledUl>
@@ -25,7 +27,9 @@ export const NavMenu: React.FC<Props> = ({ }) => {
         </StyledLi>
         <StyledLi>
           <Link href="/contribucion" passHref>
-            <StyledAnchor>Contribuir</StyledAnchor>
+            <StyledAnchor>
+              Contribuir <Image src={MetamaskIcon} width={16} height={16} alt="metamask logo"/>
+            </StyledAnchor>
           </Link>
         </StyledLi>
       </StyledUl>

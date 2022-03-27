@@ -15,17 +15,17 @@ export const TarjetaGraficaWrapper = styled.article`
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
     margin: 2rem auto 0 auto;
-    max-width: 90vw;
+    width: 70%;
   }
 
   @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
     margin: 2.5rem auto 0 auto;
-    max-width: 60vw;
+    width: 40%;
   }
-
+  
   @media screen and (${({ theme }: Props) => theme.breakpoints.xlarge}) {
     margin: 3rem auto 0 auto;
-    max-width: 50vw;
+    width: 30%;
   }
 `;
 
