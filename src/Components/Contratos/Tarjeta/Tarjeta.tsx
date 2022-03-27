@@ -42,7 +42,7 @@ export const Tarjeta: React.FC<TarjetaProps> = ({ contrato }) => {
         <span aria-label="coste total">{formatearCoste(costeTotal)}</span>
         <CopiarEnlace onClick={copiar}>
           {mostrarTooltip && <Tooltip>Enlace copiado al portapapeles!</Tooltip>}
-          <Image src={CopyIcon} width={24} height={24} alt="copiar enlace" title='Copiar enlace'/>
+          { CopyIcon && <Image src={CopyIcon} width={24} height={24} alt="copiar enlace" title='Copiar enlace'/> }
         </CopiarEnlace>
       </TarjetaHeader>
       <Institucion institucion={institucion} />
