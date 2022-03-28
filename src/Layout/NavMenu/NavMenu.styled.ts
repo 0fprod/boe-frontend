@@ -41,12 +41,14 @@ export const StyledLi = styled.li`
   }
 
   &:last-child {
-    background-color: white;
     a {
       display: flex;
-      align-items: center;
-      color: ${({ theme }: Props) => theme.colors.warning};
+      align-items: baseline;
     }
+  }
+
+  .active {
+    text-decoration: underline;
   }
 `;
 
