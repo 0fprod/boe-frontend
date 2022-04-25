@@ -45,7 +45,7 @@ export const Contribucion: React.FC<{}> = () => {
       <DestinoWrapper>
         <p>O envía cualquier token a esta dirección </p>
         <InputWrapper>
-          <DireccionDestino type="text" value="0x57d3564Fe77ae5f4787f5AdF70Df081c836f210C" disabled ref={destinationRef} />
+          <DireccionDestino type="text" value="0x14A075Fff3BD211ce8715ed641dB23C2bD140859" disabled ref={destinationRef} />
           <Image src={CopyIcon} width={24} height={28} alt="copiar" onClick={copiar} title="Copiar" />
           {mostrarTooltip && <Tooltip>Copiado al portapapeles!</Tooltip>}
         </InputWrapper>
