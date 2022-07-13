@@ -23,7 +23,7 @@ export const NavMenu: React.FC<Props> = ({}) => {
             <StyledAnchor className={pathname === '/estadisticas' ? 'active' : ''}> Estadísticas</StyledAnchor>
           </Link>
         </StyledLi>
-        <StyledLi>
+        {/* <StyledLi>
           <Link href="/informacion" passHref>
             <StyledAnchor className={pathname === '/informacion' ? 'active' : ''}>Información</StyledAnchor>
           </Link>
@@ -34,7 +34,7 @@ export const NavMenu: React.FC<Props> = ({}) => {
               Contribuir&nbsp;<Image src={MetamaskIcon} width={16} height={16} alt="metamask logo" />
             </StyledAnchor>
           </Link>
-        </StyledLi>
+        </StyledLi> */}
       </StyledUl>
     </StyledNav>
   );
