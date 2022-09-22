@@ -6,7 +6,7 @@ import { Layout } from '../src/Layout/Layout';
 const Info: NextPage = () => {
   return (
     <Layout>
-        <Contribucion />
+        {/* <Contribucion /> */}
     </Layout>
   );
 };
