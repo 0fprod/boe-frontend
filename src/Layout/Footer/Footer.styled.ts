@@ -9,7 +9,7 @@ export const StyledFooter = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 5vh;
+  padding-block: 30px 40px;
   background-color: ${({ theme }: Props) => theme.colors.primary};
   font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
   color: ${({ theme }: Props) => theme.colors.foregroundLight};

@@ -7,7 +7,7 @@ interface Props {
 
 export const StyledNav = styled.nav`
   background-color: ${({ theme }: Props) => theme.colors.primary};
-  height: 5vh;
+  padding-block: 12px;
 `;
 
 export const StyledUl = styled.ul`
