@@ -5,75 +5,51 @@ interface Props {
   theme: CustomTheme;
 }
 
-export const BeneficiariosWrapper = styled.ul`
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem;
-  align-items: flex-start;
-  list-style-type: none;
-
-  > li:nth-child(even) {
-    background-color: ${({ theme }: Props) => theme.colors.lightGray};
-  }
+export const BeneficiariosWrapper = styled.section`
+  padding-block: 1rem;
+  padding-inline: 1.2rem;
+  border-radius: 0.15rem;
+  background-color: #f5f5f5;
+  overflow-x: scroll;
 `;
 
-export const WrapperLabel = styled.li`
-  position: absolute;
-  top: -0.5rem;
-  font-size: 0.875rem;
-  text-decoration: underline;
-  text-underline-position: under;
-`;
-
-export const BeneficarioItem = styled.li`
-  width: 100%;
-`;
-
-export const StyledBeneficiario = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+export const WrapperLabel = styled.h4`
+  font-size: 1.2rem;
   font-weight: 500;
-  padding: 0.5rem;
-  font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
+  margin-bottom: 0.6rem;
+`;
 
-  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
-    font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
-  }
+export const BeneficiariosBody = styled.table`
+  margin-top: 1.3rem;
+  padding: 0;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #e5e7eb;
+  border-collapse: collapse;
+`;
 
-  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
-    font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
-  }
-  span[aria-label='coste'] {
-    color: ${({ theme }: Props) => theme.colors.error};
+export const BeneficiarioItemHeader = styled.th`
+  font-weight: 500;
+  padding: 0;
+  font-size: 1rem;
+  padding: 0.6rem 0.6rem;
+  :not(:first-child) {
+    border-left: 1px solid #e5e7eb;
   }
 `;
 
-export const DetallesBeneficiario = styled.ul`
-  padding: 0 0.5rem;
-  list-style-type: none;
-`;
-
-export const StyledListItem = styled.li`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-block: 0.2rem;
-  font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
-
-  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
-    font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
+export const BeneficiarioTableCell = styled.td`
+  font-size: 1.05rem;
+  border-top: 1px solid #e5e7eb;
+  padding: 0.6rem 0.6rem;
+  color: #262626;
+  :not(:first-child) {
+    border-left: 1px solid #e5e7eb;
   }
-
-  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
-    font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
+  :nth-child(4) {
+    text-align: center;
   }
-`;
-
-export const StyledLabel = styled.span`
-  font-weight: 400;
-  color: ${({ theme }: Props) => theme.colors.foregroundDark};
-  margin-right: 0.5rem;
+  :last-child {
+    font-size: 1rem;
+  }
 `;

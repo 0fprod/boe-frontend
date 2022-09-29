@@ -38,7 +38,8 @@ describe('Specs de Tarjeta', () => {
       expect(getByText(/2021-11-13/i)).toBeInTheDocument();
     });
   });
-  describe('La Institucion', () => {
+
+  describe('La Institución', () => {
     it('Renderiza una tarjeta con los datos de una institución', () => {
       const contrato = construirContrato({
         fechaPub: '2021/11/13',

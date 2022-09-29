@@ -5,38 +5,30 @@ interface Props {
   theme: CustomTheme;
 }
 
-export const InstitucionWrapper = styled.ul`
-  padding: 0 1rem;
-  list-style-type: none;
-  position: relative;
+export const InstitucionWrapper = styled.section`
+  line-height: 1.8;
+  padding-block: 1rem;
+  padding-inline: 1.2rem;
+  border-radius: 0.15rem;
+  background-color: #f5f5f5;
+`;
+
+export const StyledParagraph = styled.span`
+  font-size: 1.1rem;
+
+  ::before {
+    content: ' ';
+  }
 `;
 
 export const StyledLabel = styled.span`
-  font-weight: bolder;
-  color: ${({ theme }: Props) => theme.colors.foregroundDark};
-  margin-right: 0.5rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #475569;
 `;
 
-export const StyledListItem = styled.li`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-block: 0.2rem;
-  font-size: ${({ theme }: Props) => theme.fonts.mobile.body.size};
-
-  @media screen and (${({ theme }: Props) => theme.breakpoints.tablet}) {
-    font-size: ${({ theme }: Props) => theme.fonts.tablet.body.size};
-  }
-
-  @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
-    font-size: ${({ theme }: Props) => theme.fonts.desktop.body.size};
-  }
-`;
-
-export const WrapperLabel = styled.li`
-  position: absolute;
-  top: -1rem;
-  font-size: 0.875rem;
-  text-decoration: underline;
-  text-underline-position: under;
+export const WrapperLabel = styled.h4`
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
 `;

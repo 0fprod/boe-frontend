@@ -38,17 +38,6 @@ export const formatearFecha = (fechaEnIso: string): string => {
   }
 };
 
-export const generarIdArticulos = (coste: number, nombreInstitucion: string): string => {
-  const costeSinSimbolos = coste.toString().replace(/[\.,€\s]/g, '');
-  const nombreNormalizado = nombreInstitucion
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();
-  const nombreSinSimbolos = nombreNormalizado.replace(/[_\[\]\.,:;\(\)-]/g, ' ').trim();
-  const nombreKebabCase = nombreSinSimbolos.replace(/\s+/g, '-');
-  return `${costeSinSimbolos}-${nombreKebabCase}`;
-};
-
 export const getRedPorChainId = (redes: Red[], chainId: number) => redes.find((r) => r.chainId === chainId);
 
 export const COLORES_GRAFICOS = [

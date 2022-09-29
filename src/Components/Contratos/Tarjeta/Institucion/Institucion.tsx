@@ -1,6 +1,6 @@
 import React from 'react';
 import { Institucion as InstitucionModel } from '../../../../Models/contratos.model';
-import { InstitucionWrapper, StyledLabel, StyledListItem, WrapperLabel } from './Institucion.styled';
+import { InstitucionWrapper, StyledLabel, StyledParagraph, WrapperLabel } from './Institucion.styled';
 
 export interface InstitucionProps {
   institucion: InstitucionModel;
@@ -8,50 +8,51 @@ export interface InstitucionProps {
 
 export const Institucion: React.FC<InstitucionProps> = ({ institucion }) => {
   const { actividad, email, nif, nombre, telefono, tipoActividad, web } = institucion;
+
   return (
     <InstitucionWrapper>
       <WrapperLabel>Institución adjudicadora</WrapperLabel>
       {actividad && (
-        <StyledListItem>
+        <p>
           <StyledLabel>Actividad:</StyledLabel>
-          {actividad}
-        </StyledListItem>
+          <StyledParagraph>{actividad}</StyledParagraph>
+        </p>
       )}
       {tipoActividad && (
-        <StyledListItem>
+        <p>
           <StyledLabel>Tipo de actividad:</StyledLabel>
-          {tipoActividad}
-        </StyledListItem>
+          <StyledParagraph>{tipoActividad}</StyledParagraph>
+        </p>
       )}
       {nombre && (
-        <StyledListItem>
+        <p>
           <StyledLabel>Nombre:</StyledLabel>
-          {nombre}
-        </StyledListItem>
+          <StyledParagraph>{nombre}</StyledParagraph>
+        </p>
       )}
       {nif && (
-        <StyledListItem>
+        <p>
           <StyledLabel>NIF:</StyledLabel>
-          {nif}
-        </StyledListItem>
+          <StyledParagraph>{nif}</StyledParagraph>
+        </p>
       )}
       {email && (
-        <StyledListItem>
+        <p>
           <StyledLabel>Email:</StyledLabel>
-          {email}
-        </StyledListItem>
+          <StyledParagraph>{email}</StyledParagraph>
+        </p>
       )}
       {telefono && (
-        <StyledListItem>
+        <p>
           <StyledLabel>Teléfono:</StyledLabel>
-          {telefono}
-        </StyledListItem>
+          <StyledParagraph>{telefono}</StyledParagraph>
+        </p>
       )}
       {web && (
-        <StyledListItem>
+        <p>
           <StyledLabel>Web:</StyledLabel>
           {web}
-        </StyledListItem>
+        </p>
       )}
     </InstitucionWrapper>
   );
