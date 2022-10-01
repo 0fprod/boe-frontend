@@ -21,6 +21,12 @@ a {
   text-decoration: none;
 }
 
+h4,
+h5,
+p {
+  margin-block: 0;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -2,12 +2,10 @@ import React from 'react';
 import { Beneficiario } from '../../../../Models/contratos.model';
 import { formatearCoste } from '../../../../utils/utils';
 import {
-  BeneficarioItem,
+  BeneficiarioItemHeader,
+  BeneficiariosBody,
   BeneficiariosWrapper,
-  DetallesBeneficiario,
-  StyledBeneficiario,
-  StyledLabel,
-  StyledListItem,
+  BeneficiarioTableCell,
   WrapperLabel,
 } from './Beneficiarios.styled';
 
@@ -15,37 +13,34 @@ export interface BeneficiariosProps {
   beneficiarios: Beneficiario[];
 }
 
-export const Beneficiarios: React.FC<BeneficiariosProps> = ({ beneficiarios }) => {
-  const totalBeneficiarios = beneficiarios.length;
-  const pyme: string = '✅';
-  const noPyme: string = '❌';
+const getIconIsPyme = (isPyme: boolean) => (isPyme ? '✅' : '❌');
 
+export const Beneficiarios: React.FC<BeneficiariosProps> = ({ beneficiarios }) => {
   return (
     <BeneficiariosWrapper>
       <WrapperLabel>Adjudicatarios</WrapperLabel>
-      {beneficiarios &&
-        beneficiarios.length &&
-        beneficiarios.map((b, i) => (
-          <BeneficarioItem key={i}>
-            <StyledBeneficiario>
-              <span aria-label="nombre">{b.nombre}</span>
-              <span aria-label="coste">{formatearCoste(b.coste)}</span>
-            </StyledBeneficiario>
-            <DetallesBeneficiario>
-              {b.nif && (
-                <StyledListItem>
-                  <StyledLabel>NIF:</StyledLabel>
-                  {b.nif}
-                </StyledListItem>
-              )}
-              <StyledListItem>
-                <StyledLabel>PYME:</StyledLabel>
-                {b.esPyme ? pyme : noPyme}
-              </StyledListItem>
-              {totalBeneficiarios > 1 && <p>{b.descripcion}</p>}
-            </DetallesBeneficiario>
-          </BeneficarioItem>
-        ))}
+      <BeneficiariosBody>
+        <thead>
+          <tr>
+            <BeneficiarioItemHeader>Nombre Empresa</BeneficiarioItemHeader>
+            <BeneficiarioItemHeader>Coste</BeneficiarioItemHeader>
+            <BeneficiarioItemHeader>NIF</BeneficiarioItemHeader>
+            <BeneficiarioItemHeader>PyME</BeneficiarioItemHeader>
+            <BeneficiarioItemHeader>Descripción</BeneficiarioItemHeader>
+          </tr>
+        </thead>
+        <tbody>
+          {beneficiarios.map(({ nombre, coste, nif, esPyme, descripcion }, i) => (
+            <tr key={i}>
+              <BeneficiarioTableCell>{nombre}</BeneficiarioTableCell>
+              <BeneficiarioTableCell>{formatearCoste(coste)}</BeneficiarioTableCell>
+              <BeneficiarioTableCell>{nif.replaceAll('.', '')}</BeneficiarioTableCell>
+              <BeneficiarioTableCell>{getIconIsPyme(esPyme)}</BeneficiarioTableCell>
+              <BeneficiarioTableCell>{descripcion}</BeneficiarioTableCell>
+            </tr>
+          ))}
+        </tbody>
+      </BeneficiariosBody>
     </BeneficiariosWrapper>
   );
 };
