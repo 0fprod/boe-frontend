@@ -1,4 +1,3 @@
-import React from 'react';
 import { renderWithTheme } from '../../../../styles/theme.test.utils';
 import {
   construirBeneficiario,
@@ -78,13 +77,13 @@ describe('Specs de Tarjeta', () => {
           ],
         }),
       });
-      const { getByText } = renderWithTheme(<Tarjeta contrato={contrato} />);
+      const { getByText, getAllByText } = renderWithTheme(<Tarjeta contrato={contrato} />);
 
-      expect(getByText(/beneficiario irrelevante1/i)).toBeInTheDocument();
+      expect(getAllByText(/beneficiario irrelevante1/i)).toHaveLength(2);
       expect(getByText(/descripcion irrelevante1/i)).toBeInTheDocument();
       expect(getByText('❌')).toBeInTheDocument();
 
-      expect(getByText(/beneficiario irrelevante2/i)).toBeInTheDocument();
+      expect(getAllByText(/beneficiario irrelevante2/i)).toHaveLength(2);
       expect(getByText(/descripcion irrelevante2/i)).toBeInTheDocument();
       expect(getByText('✅')).toBeInTheDocument();
     });

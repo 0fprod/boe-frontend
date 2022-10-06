@@ -1,16 +1,18 @@
 import React from 'react';
-import { Beneficiario } from '../../../../Models/contratos.model';
+import { Beneficiario as BeneficiarioModel } from '../../../../Models/contratos.model';
 import { formatearCoste } from '../../../../utils/utils';
+import { Beneficiario } from '../Beneficiario/Beneficiario';
 import {
   BeneficiarioItemHeader,
   BeneficiariosBody,
+  BeneficiariosBodyMobile,
   BeneficiariosWrapper,
   BeneficiarioTableCell,
   WrapperLabel,
 } from './Beneficiarios.styled';
 
 export interface BeneficiariosProps {
-  beneficiarios: Beneficiario[];
+  beneficiarios: BeneficiarioModel[];
 }
 
 const getIconIsPyme = (isPyme: boolean) => (isPyme ? '✅' : '❌');
@@ -41,6 +43,11 @@ export const Beneficiarios: React.FC<BeneficiariosProps> = ({ beneficiarios }) =
           ))}
         </tbody>
       </BeneficiariosBody>
+      <BeneficiariosBodyMobile>
+        {beneficiarios.map((beneficiario, i) => (
+          <Beneficiario key={i} beneficiario={beneficiario} />
+        ))}
+      </BeneficiariosBodyMobile>
     </BeneficiariosWrapper>
   );
 };
