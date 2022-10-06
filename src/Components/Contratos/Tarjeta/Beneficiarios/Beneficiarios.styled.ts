@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BeneficiariosWrapper = styled.section`
   padding-block: 1rem;
-  padding-inline: 1.2rem;
+  padding-inline: 0.5rem;
   border-radius: 0.15rem;
   background-color: #f5f5f5;
   overflow-x: scroll;
@@ -11,6 +11,7 @@ export const BeneficiariosWrapper = styled.section`
 export const WrapperLabel = styled.h4`
   font-size: 1.2rem;
   font-weight: 500;
+  padding-inline: 0.7rem;
   margin-bottom: 0.6rem;
   margin-bottom: 1.3rem;
 `;
