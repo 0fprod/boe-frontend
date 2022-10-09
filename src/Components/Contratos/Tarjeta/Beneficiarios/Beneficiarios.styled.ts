@@ -1,13 +1,8 @@
 import styled from 'styled-components';
-import { CustomTheme } from '../../../../../styles/theme/theme.model';
-
-interface Props {
-  theme: CustomTheme;
-}
 
 export const BeneficiariosWrapper = styled.section`
   padding-block: 1rem;
-  padding-inline: 1.2rem;
+  padding-inline: 0.5rem;
   border-radius: 0.15rem;
   background-color: #f5f5f5;
   overflow-x: scroll;
@@ -16,16 +11,29 @@ export const BeneficiariosWrapper = styled.section`
 export const WrapperLabel = styled.h4`
   font-size: 1.2rem;
   font-weight: 500;
+  padding-inline: 0.7rem;
   margin-bottom: 0.6rem;
+  margin-bottom: 1.3rem;
 `;
 
 export const BeneficiariosBody = styled.table`
-  margin-top: 1.3rem;
   padding: 0;
   width: 100%;
   background-color: rgb(255, 255, 255);
   border: 1px solid #e5e7eb;
   border-collapse: collapse;
+
+  @media (max-width: 699px) {
+    display: none;
+  }
+`;
+
+export const BeneficiariosBodyMobile = styled.div`
+  background-color: rgb(255, 255, 255);
+
+  @media (min-width: 700px) {
+    display: none;
+  }
 `;
 
 export const BeneficiarioItemHeader = styled.th`
