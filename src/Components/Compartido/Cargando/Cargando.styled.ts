@@ -22,7 +22,7 @@ export const CargandoWrapper = styled.div`
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid #fff;
+    border: 6px solid ${({ theme }: Props) => theme.colors.foregroundLight};
     border-color: ${({ theme }: Props) => theme.colors.secondary} transparent ${({ theme }: Props) => theme.colors.secondary} transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }

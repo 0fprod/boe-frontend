@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { CustomTheme } from '../../../../../styles/theme/theme.model';
+
+interface Props {
+  theme: CustomTheme;
+}
 
 export const BeneficiarioInformation = styled.div`
   display: grid;
@@ -24,7 +29,7 @@ export const BeneficiarioStyle = styled.div`
 
   :not(:first-child) {
     border-block-style: solid;
-    border-block-color: #e5e7eb;
+    border-block-color: ${({ theme }: Props) => theme.colors.foregroundLight};
     border-top-width: 3px;
   }
 `;
@@ -40,7 +45,11 @@ export const BeneficiarioIconContainer = styled.button`
     left: 0.6rem;
     width: 2.5rem;
     height: 2.5rem;
-    fill: #0ea5e9;
+    fill: ${({ theme }: Props) => theme.colors.primary};
     stroke: white;
   }
+`;
+
+export const Coste = styled.span`
+  color: ${({ theme }: Props) => theme.colors.error};
 `;

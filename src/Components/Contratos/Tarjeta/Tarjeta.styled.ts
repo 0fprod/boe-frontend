@@ -71,7 +71,7 @@ export const StyledDescripcion = styled.p`
   padding-block: 1rem;
   padding-inline: 1.2rem;
   border-radius: 0.15rem;
-  background-color: #f5f5f5;
+  background-color: ${({ theme }: Props) => theme.colors.lightGray};
   line-height: 1.45;
   font-weight: 400;
   font-size: 1.2rem;

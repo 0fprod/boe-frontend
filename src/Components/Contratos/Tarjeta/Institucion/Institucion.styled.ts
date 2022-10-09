@@ -10,7 +10,7 @@ export const InstitucionWrapper = styled.section`
   padding-block: 1rem;
   padding-inline: 1.2rem;
   border-radius: 0.15rem;
-  background-color: #f5f5f5;
+  background-color: ${({ theme }: Props) => theme.colors.lightGray};
 `;
 
 export const StyledParagraph = styled.span`
@@ -24,7 +24,7 @@ export const StyledParagraph = styled.span`
 export const StyledLabel = styled.span`
   font-weight: 500;
   font-size: 1.1rem;
-  color: #475569;
+  color: ${({ theme }: Props) => theme.colors.foregroundDark};
 `;
 
 export const WrapperLabel = styled.h4`

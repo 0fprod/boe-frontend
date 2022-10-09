@@ -6,6 +6,7 @@ import {
   BeneficiarioInformation,
   BeneficiarioInformationContainer,
   BeneficiarioStyle,
+  Coste
 } from './Beneficiario.styled';
 
 export interface BeneficiarioProps {
@@ -66,12 +67,12 @@ export const Beneficiario: React.FC<BeneficiarioProps> = ({ beneficiario }) => {
           <span>Nombre Empresa:</span>
           <span>{nombre}</span>
         </BeneficiarioInformation>
+        <BeneficiarioInformation>
+          <span>Coste:</span>
+          <Coste>{formatearCoste(coste)}</Coste>
+        </BeneficiarioInformation>
         {isExpanded && (
           <>
-            <BeneficiarioInformation>
-              <span>Coste:</span>
-              <span>{formatearCoste(coste)}</span>
-            </BeneficiarioInformation>
             <BeneficiarioInformation>
               <span>NIF:</span>
               <span>{nif.replaceAll('.', '')}</span>
