@@ -4,7 +4,6 @@ import { Metamask } from './Metamask/Metamask';
 import Logo from '../../../public/metamask.png';
 import NextImage from 'next/image';
 import { useCheckMetamaskInstalled } from '../../Hooks/useEthereum';
-import Image from 'next/image';
 import CopyIcon from '/public/copy.png';
 import { ContextProvider } from '../../Context/metamask.context';
 
@@ -46,7 +45,7 @@ export const Contribucion: React.FC<{}> = () => {
         <p>O envía cualquier token a esta dirección</p>
         <InputWrapper>
           <DireccionDestino type="text" value="0x14A075Fff3BD211ce8715ed641dB23C2bD140859" disabled ref={destinationRef} />
-          <Image src={CopyIcon} width={24} height={28} alt="copiar" onClick={copiar} title="Copiar" />
+          <NextImage src={CopyIcon} width={24} height={28} alt="copiar" onClick={copiar} title="Copiar" />
           {mostrarTooltip && <Tooltip>Copiado al portapapeles!</Tooltip>}
         </InputWrapper>
       </DestinoWrapper>

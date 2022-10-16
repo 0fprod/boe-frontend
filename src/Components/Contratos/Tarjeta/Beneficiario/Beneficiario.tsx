@@ -6,10 +6,11 @@ import {
   BeneficiarioInformation,
   BeneficiarioInformationContainer,
   BeneficiarioStyle,
-  Coste
+  ExtraInfo,
+  Coste,
 } from './Beneficiario.styled';
-import ExpandIcon from '../../../../../public/expand-icon.svg' 
-import CollapseIcon from '../../../../../public/collapse-icon.svg' 
+import Chevron from '../../../../../public/right-button.png'
+import NextImage from 'next/image';
 
 export interface BeneficiarioProps {
   beneficiario: BeneficiarioModel;
@@ -27,15 +28,9 @@ export const Beneficiario: React.FC<BeneficiarioProps> = ({ beneficiario }) => {
 
   return (
     <BeneficiarioStyle>
-      {isExpanded ? (
-        <BeneficiarioIconContainer onClick={handleExpand} aria-label="Contraer informacion">
-          <ExpandIcon strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        <BeneficiarioIconContainer onClick={handleExpand} aria-label="Contraer informacion" style={{position:'absolute'}}>
+          <NextImage src={Chevron} alt="expand" width={32} height={32} style={{transform: isExpanded ? 'rotate(90deg)': '', transition: '0.25s'}}/>
         </BeneficiarioIconContainer>
-      ) : (
-        <BeneficiarioIconContainer onClick={handleExpand} aria-label="Expandir informacion">
-          <CollapseIcon strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"></CollapseIcon>
-        </BeneficiarioIconContainer>
-      )}
       <BeneficiarioInformationContainer>
         <BeneficiarioInformation>
           <span>Nombre Empresa:</span>
@@ -45,8 +40,7 @@ export const Beneficiario: React.FC<BeneficiarioProps> = ({ beneficiario }) => {
           <span>Coste:</span>
           <Coste>{formatearCoste(coste)}</Coste>
         </BeneficiarioInformation>
-        {isExpanded && (
-          <>
+        <ExtraInfo isExpanded={isExpanded}>
             <BeneficiarioInformation>
               <span>NIF:</span>
               <span>{nif.replaceAll('.', '')}</span>
@@ -59,8 +53,7 @@ export const Beneficiario: React.FC<BeneficiarioProps> = ({ beneficiario }) => {
               <span>Descripción:</span>
               <span>{descripcion}</span>
             </BeneficiarioInformation>
-          </>
-        )}
+        </ExtraInfo>
       </BeneficiarioInformationContainer>
     </BeneficiarioStyle>
   );
