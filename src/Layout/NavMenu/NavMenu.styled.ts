@@ -23,7 +23,7 @@ export const StyledUl = styled.ul`
 export const StyledLi = styled.li`
   padding: 0 0.5rem;
   color: ${({ theme }: Props) => theme.colors.foregroundLight};
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   height: 100%;
   align-items: center;
   display: flex;
