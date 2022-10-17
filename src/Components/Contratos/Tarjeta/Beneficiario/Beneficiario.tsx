@@ -6,7 +6,11 @@ import {
   BeneficiarioInformation,
   BeneficiarioInformationContainer,
   BeneficiarioStyle,
+  ExtraInfo,
+  Coste,
 } from './Beneficiario.styled';
+import Chevron from '../../../../../public/right-button.png'
+import NextImage from 'next/image';
 
 export interface BeneficiarioProps {
   beneficiario: BeneficiarioModel;
@@ -24,54 +28,19 @@ export const Beneficiario: React.FC<BeneficiarioProps> = ({ beneficiario }) => {
 
   return (
     <BeneficiarioStyle>
-      {isExpanded ? (
-        <BeneficiarioIconContainer onClick={handleExpand} aria-label="Contraer informacion">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <circle cx="12" cy="12" r="9"></circle>
-            <line x1="12" y1="8" x2="8" y2="12"></line>
-            <line x1="12" y1="8" x2="12" y2="16"></line>
-            <line x1="16" y1="12" x2="12" y2="8"></line>
-          </svg>
+        <BeneficiarioIconContainer onClick={handleExpand} aria-label="Contraer informacion" style={{position:'absolute'}}>
+          <NextImage src={Chevron} alt="expand" width={32} height={32} style={{transform: isExpanded ? 'rotate(90deg)': '', transition: '0.25s'}}/>
         </BeneficiarioIconContainer>
-      ) : (
-        <BeneficiarioIconContainer onClick={handleExpand} aria-label="Expandir informacion">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <circle cx="12" cy="12" r="9"></circle>
-            <line x1="8" y1="12" x2="12" y2="16"></line>
-            <line x1="12" y1="8" x2="12" y2="16"></line>
-            <line x1="16" y1="12" x2="12" y2="16"></line>
-          </svg>
-        </BeneficiarioIconContainer>
-      )}
       <BeneficiarioInformationContainer>
         <BeneficiarioInformation>
           <span>Nombre Empresa:</span>
           <span>{nombre}</span>
         </BeneficiarioInformation>
-        {isExpanded && (
-          <>
-            <BeneficiarioInformation>
-              <span>Coste:</span>
-              <span>{formatearCoste(coste)}</span>
-            </BeneficiarioInformation>
+        <BeneficiarioInformation>
+          <span>Coste:</span>
+          <Coste>{formatearCoste(coste)}</Coste>
+        </BeneficiarioInformation>
+        <ExtraInfo isExpanded={isExpanded}>
             <BeneficiarioInformation>
               <span>NIF:</span>
               <span>{nif.replaceAll('.', '')}</span>
@@ -84,8 +53,7 @@ export const Beneficiario: React.FC<BeneficiarioProps> = ({ beneficiario }) => {
               <span>Descripción:</span>
               <span>{descripcion}</span>
             </BeneficiarioInformation>
-          </>
-        )}
+        </ExtraInfo>
       </BeneficiarioInformationContainer>
     </BeneficiarioStyle>
   );

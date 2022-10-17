@@ -1,10 +1,15 @@
 import styled from 'styled-components';
+import { CustomTheme } from '../../../../../styles/theme/theme.model';
+
+interface Props {
+  theme: CustomTheme;
+}
 
 export const BeneficiariosWrapper = styled.section`
   padding-block: 1rem;
   padding-inline: 0.5rem;
   border-radius: 0.15rem;
-  background-color: #f5f5f5;
+  background-color: ${({ theme }: Props) => theme.colors.lightGray};
   overflow-x: scroll;
 `;
 
@@ -19,8 +24,8 @@ export const WrapperLabel = styled.h4`
 export const BeneficiariosBody = styled.table`
   padding: 0;
   width: 100%;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #e5e7eb;
+  background-color: ${({ theme }: Props) => theme.colors.foregroundLight};
+  border: 1px solid ${({ theme }: Props) => theme.colors.lightGray};
   border-collapse: collapse;
 
   @media (max-width: 699px) {
@@ -42,17 +47,17 @@ export const BeneficiarioItemHeader = styled.th`
   font-size: 1rem;
   padding: 0.6rem 0.6rem;
   :not(:first-child) {
-    border-left: 1px solid #e5e7eb;
+    border-left: 1px solid ${({ theme }: Props) => theme.colors.lightGray};
   }
 `;
 
 export const BeneficiarioTableCell = styled.td`
   font-size: 1.05rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid ${({ theme }: Props) => theme.colors.lightGray};
   padding: 0.6rem 0.6rem;
-  color: #262626;
+  color: ${({ theme }: Props) => theme.colors.foregroundDark};
   :not(:first-child) {
-    border-left: 1px solid #e5e7eb;
+    border-left: 1px solid ${({ theme }: Props) => theme.colors.lightGray};
   }
   :nth-child(4) {
     text-align: center;

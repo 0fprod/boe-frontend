@@ -6,14 +6,14 @@ interface Props {
 }
 
 export const StyledPopUp = styled.div`
-  background-color: #caf5bf;
+  background-color: ${({ theme }: Props) => theme.colors.success};
   font-size: ${({ theme }: Props) => theme.fonts.mobile.small.size};
   position: fixed;
   width: auto;
   bottom: 1.75rem;
   border-radius: 1rem;
   padding: 2rem;
-  left:0rem;
+  left: 0rem;
   z-index: 1;
   word-break: break-all;
 
@@ -21,7 +21,7 @@ export const StyledPopUp = styled.div`
     left: 2rem;
     font-size: ${({ theme }: Props) => theme.fonts.tablet.small.size};
   }
-  
+
   @media screen and (${({ theme }: Props) => theme.breakpoints.desktop}) {
     width: 50rem;
     font-size: ${({ theme }: Props) => theme.fonts.desktop.small.size};
