@@ -33,7 +33,7 @@ export const BeneficiarioInformation = styled.div`
 `;
 
 export const ExtraInfo = styled.div<{ isExpanded: boolean }>`
-  max-height: ${({ isExpanded }) => (isExpanded ? '5rem' : '0rem')};
+  max-height: ${({ isExpanded }) => (isExpanded ? '15rem' : '0rem')};
   transition: 0.25s;
   overflow: hidden;
 `;
