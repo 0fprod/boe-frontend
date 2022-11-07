@@ -1,7 +1,7 @@
 name: Cron
 on:
   schedule:
-    - cron: '0 6 * * *' # le afecta el cambio de hora
+    - cron: '0 7 * * *' # le afecta el cambio de hora
 
 env:
   SECRETAPI: ${{ secrets.API_SECRET }}
